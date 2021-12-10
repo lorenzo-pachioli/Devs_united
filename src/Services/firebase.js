@@ -1,7 +1,7 @@
 import "firebase/firestore";
 /* import firebase from "firebase/app"; */
 import { initializeApp } from 'firebase/app';
-
+import {getFirestore} from 'firebase/firestore/lite';
 
 
 
@@ -27,6 +27,7 @@ export const firestore = firebase.firestore();
 export default firebase; */
 
 export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 
 
 
