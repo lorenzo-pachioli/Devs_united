@@ -1,3 +1,4 @@
+import { onSnapshot } from 'firebase/firestore';
 import {collection, getDocs, addDoc, deleteDoc , doc  } from 'firebase/firestore/lite';
 /* import firebase, {firestore} from "./firebase"; */
 import {db} from "./firebase";
@@ -26,3 +27,7 @@ export async function deleteDocument(coll, id){
   return docRef;
 }
 
+export function getDoc(coll, callback){
+  const docRef = collection(db, coll);
+  return onSnapshot(docRef, callback);
+}
