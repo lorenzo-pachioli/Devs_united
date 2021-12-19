@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import getColections, {setDocument, deleteDocument} from "./Services/Operations";
+import getColections, {setDocument, deleteDocument, updateDocument } from "./Services/Operations";
 /* import {db} from "./Services/firebase";
 import { addDoc, collection } from "firebase/firestore"; */
 
@@ -13,13 +13,13 @@ function App() {
   const [tweetUpload, setTweet] = useState({
     Name:"",
     Tweet:"",
-    Likes:"8"
+    Likes: 0
   });
+  const [tweetUpdate, setUpdate] = useState({});
   const [buttonUpload , setButtonUpload] = useState(false);
   const [tweetDelete, setTweetDelete] = useState(null);
   const [buttonDelete, setButtonDelete] = useState(false);
 
-  let tweetId = tweetList.length;
   
 
   /* useEffect para traer la coleccion de firebase */
@@ -56,8 +56,11 @@ function App() {
         });
       }
     }
+
+    
+
     upload();
-  }, [buttonUpload, tweetUpload, tweetId, tweetList]);
+  }, [buttonUpload, tweetUpload, tweetList]);
 
 
   /* useEffect para eliminar un tweet de la coleccion de firebase */
@@ -80,23 +83,59 @@ function App() {
     
   }, [ tweetDelete, buttonDelete, tweetList]);
 
+  useEffect(() => {
+    
+     async function updateTweet(){
+       if (typeof tweetUpdate.Likes !== "undefined"){
+        const docRef = await updateDocument("Tweets", tweetUpdate.id, tweetUpdate.Likes );
+        
+        return docRef;
+       }
+    } 
+    updateTweet();
+    
+    
+    
+
+    
+  }, [tweetUpdate]);
+
   
  
  
 
   const handleInputs= (e) => {
     
-    let newTweet = {
+    let tweet = {
       ...tweetUpload,
       [e.target.name] : e.target.value
       
     }
-    setTweet(newTweet);
+    setTweet(tweet);
   }
 
   const handleButton = (e) => {
     e.preventDefault();
     setButtonUpload(true);
+  }
+
+  const handleLikes = (event) => {
+    const newList = tweetList.map((tweet)=>{
+      if(tweet.id === event.target.value){
+        const newLike = {
+          Name: tweet.Name,
+          Tweet: tweet.Tweet,
+          Likes: tweet.Likes + 1,
+          id: tweet.id
+        }
+        setUpdate(newLike);
+        return newLike;
+      }else{
+        return tweet;
+      }
+    });
+    setList(newList);
+
   }
   
 
@@ -134,7 +173,8 @@ function App() {
               return(
                 <div key={tweetList.indexOf(tweet)} >
                   <div display="flex" flex-direction="row">
-                    <div>{tweet.Name} ({tweet.id}) ({tweet.likes}) : {tweet.Tweet}</div>
+                    <div>{tweet.Name} ({tweet.id}) : {tweet.Tweet}</div>
+                    <button name = "Likes" onClick={handleLikes} value={tweet.id}>{tweet.Likes}</button>
                     <button onClick={()=>{return(
                        setTweetDelete(tweet.id),
                        setButtonDelete(true))}} >X</button>
