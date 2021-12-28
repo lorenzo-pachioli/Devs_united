@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { Route, Routes, } from "react-router-dom";
 import getColections, {setDocument, deleteDocument, updateDocument } from "./Services/Operations";
+import Welcome from "./Pages/Welcome";
+import Feed from "./Pages/Feed";
+import User from "./Pages/User";
+import LoggedOut from "./Pages/LoggedOut";
+import UserPost from "./Commponents/User/UserPost";
+import UserFavorites from "./Commponents/User/UserFavorites";
 /* import {db} from "./Services/firebase";
 import { addDoc, collection } from "firebase/firestore"; */
 
@@ -143,7 +150,20 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <Routes>
+          <Route path="/feed" element={<Feed />} />
+          <Route path="/user" element={<User />}>
+            <Route path="post" element={<UserPost />} />
+            <Route path="favorites" element={<UserFavorites />} />
+          </Route>
+          <Route path="/loggedOut" element={<LoggedOut />} />
+          <Route exact path="/" element={<Welcome />} />
+        
+      </Routes>
+      
+      
+
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <textarea 
           name="Tweet"
@@ -186,7 +206,7 @@ function App() {
             )
           }
         </div>
-      </header>
+      </header> */}
     </div>
   );
 }

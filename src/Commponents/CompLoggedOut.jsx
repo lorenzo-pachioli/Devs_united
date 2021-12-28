@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import React from 'react';
+
 export default function CompLoggedOut(){
     return (
         <div>
@@ -10,6 +13,7 @@ export default function CompLoggedOut(){
                 <h3>consectetur adipiscing elit</h3>
             </div>
             <button>Sign in with google</button>
+            <Link to="/feed">Continue</Link>
             
         </div>
     )

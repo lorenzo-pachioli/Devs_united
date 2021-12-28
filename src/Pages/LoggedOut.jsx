@@ -1,11 +1,11 @@
 import React from 'react';
 import CompLoggedOut from '../Commponents/CompLoggedOut';
-import {LogoBig} from '../Resourses/logo big.svg';
+import logoBig from '../Resourses/logoBig.svg';
 
-export default function Welcome(){
+export default function LoggedOut(){
     return (
         <div>
-            <img src={LogoBig} alt="img not found" />
+            <img src={logoBig} alt="img not found" />
             <div>
                 <CompLoggedOut />
             </div>

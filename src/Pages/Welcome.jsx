@@ -1,11 +1,11 @@
 import React from 'react';
 import CompWelcome from '../Commponents/CompWelcome';
-import {LogoBig} from '../Resourses/logo big.svg';
+import logoBig from '../Resourses/logoBig.svg';
 
 export default function Welcome(){
     return (
-        <div>
-            <img src={LogoBig} alt="img not found" />
+        <div display="flex">
+            <img src={logoBig} alt="img not found" />
             <div>
                 <CompWelcome />
             </div>
