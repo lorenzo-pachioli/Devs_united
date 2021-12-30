@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+    
+
+}
+
+.container-welcome{
+    display:flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    height: 59vh; 
+    border: 1px solid black;
+    background-color: burlywood;
+}
+
+.continue{
+    width: 100px;
+    height: 60px;
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    background-color: #00DA76;
+    text-decoration: none;
+    color: white;
+    font-size: 150%;
+}

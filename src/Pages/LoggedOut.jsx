@@ -4,7 +4,7 @@ import logoBig from '../Resourses/logoBig.svg';
 
 export default function LoggedOut(){
     return (
-        <div>
+        <div display="flex" flex-direction="row">
             <img src={logoBig} alt="img not found" />
             <div>
                 <CompLoggedOut />

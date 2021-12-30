@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+
+}
+
+main{
+    display:flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: cadetblue;
+
+}
+main div:first-child{
+    height: 60vh;
+    width: 49%;
+    
+    
+}
+
+.logo{
+    height: 60%;
+    width: 60%;
+}
+
+
+.menu{
+    display:flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+    
+    
+}
+
+/* .menu div{
+    height: 60vh;
+    width: 100%;
+    border: 1px solid black;
+    
+} */
