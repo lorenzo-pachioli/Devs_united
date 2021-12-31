@@ -6,15 +6,15 @@ import "./welcome.css";
 export default function Welcome(){
     return (
         <main >
-            <div>
+            <div className='img-welcome'>
                 <img src={logoBig} className='logo' alt="img not found" />
             </div>
             
             <div className='menu'>
-                <div>
-                    <CompWelcome />
-                </div>
-                <h5>© 2020 Devs_United - BETA</h5>
+                
+                <CompWelcome />
+                
+                <h5>© 2020 Devs_United - <span className='beta'>BETA</span> </h5>
             </div>
             
             

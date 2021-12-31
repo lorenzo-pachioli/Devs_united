@@ -1,24 +1,80 @@
 *{
     padding: 0;
     margin: 0;
-    
-
 }
 
 .container-welcome{
-    display:flex; 
+    display: flex; 
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 80%;
-    height: 59vh; 
-    border: 1px solid black;
-    background-color: burlywood;
+    width: 50%;
+    height: 45vh; 
+    color:white;
+    margin-bottom: 10%;
 }
 
+.container-welcome h1{
+    margin-bottom: 4%;
+    font-family: Silkscreen;
+}
+
+.container-welcome h4{
+    font-family: Fira Code;
+    
+}
+
+.input{
+    width: 25vw;
+    height: 3vw;
+    display:flex; 
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10%;
+    margin-bottom: 4%;
+    background-color: #150714;
+    color:#914D8B;
+    border-style: none;
+}
+
+.colours{
+    width: 25vw;
+    height: 3vw;
+    display:flex; 
+    justify-content: space-between;
+    align-items:center;
+    list-style-type: none;
+}
+
+.square{
+    width: 13%;
+    height: 100%;
+}
+
+
+.red{
+    background-color:#F50D5A;
+}
+.orange{
+    background-color:#FF865C;
+}
+.yellow{
+    background-color:#FFEA5C;
+}
+.green{
+    background-color:#00DA76;
+}
+.blue{
+    background-color:#0096CE;
+}
+.purple{
+    background-color:#800FFF;
+}
+
+
 .continue{
-    width: 100px;
-    height: 60px;
+    width: 25vw;
+    height: 3vw;
     display:flex; 
     justify-content: center;
     align-items: center;

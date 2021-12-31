@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     box-sizing: content-box;
-
 }
 
 main{
@@ -12,20 +11,22 @@ main{
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: cadetblue;
-
+    background-color: #2E132C;
 }
-main div:first-child{
+
+.img-welcome{
     height: 60vh;
     width: 49%;
-    
-    
+    display:flex; 
+    justify-content: center;
+    align-items: center;
 }
 
-.logo{
-    height: 60%;
-    width: 60%;
+.logo{   
+    width: 50%;
 }
+
+
 
 
 .menu{
@@ -34,15 +35,14 @@ main div:first-child{
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 100%;
-    border: 1px solid black;
-    
-    
+    height: 100%;   
 }
 
-/* .menu div{
-    height: 60vh;
-    width: 100%;
-    border: 1px solid black;
-    
-} */
+.menu h5{
+    word-spacing: 5px;
+    color:#60265B;
+}
+
+.beta{
+    color:#F50D5A;
+}
