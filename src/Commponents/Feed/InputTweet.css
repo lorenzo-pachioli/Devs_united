@@ -1,0 +1,64 @@
+.input-container{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    background-color: #150714;
+
+}
+
+.inputuser-img{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 80%;
+    width: 33%;
+    
+    
+
+}
+
+.inputuser-img img{
+    width: 60px;
+    height: 60px;
+    
+}
+
+.input-tweet{
+    width: 33%;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    color:white;
+    
+}
+
+.input-tweet textarea{
+    width: 350px;
+    height: 113px;
+    background-color: #2F112D;
+    color: #914D8B;
+
+}
+
+.sub-textarea{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.container-post-button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 350px;
+    height: 50px;
+}
+
+.post-button{
+    height: 70%;
+}

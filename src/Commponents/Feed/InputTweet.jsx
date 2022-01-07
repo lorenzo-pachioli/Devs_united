@@ -1,28 +1,35 @@
 import React from 'react';
 import userImg from "./user.png";
-/* import postOff from "src/Resourses/postOff.svg";
-import postOn from "src/Resourses/post on.svg"; */
+import "./InputTweet.css";
+import postOff from "./postOff.svg";
+/* import postOn from "src/Resourses/post on.svg";  */
 
 export default function InputTweet(){
+  
     
     return (
-        <div display="flex" flex-direction="row">
-            <img src={userImg} alt="img not found" />
-            <div display="flex" >
+        <div className='input-container' >
+            <div className='inputuser-img'>
+                <img src={userImg} className='user-img' alt="img not found" />
+            </div>
+            
+            <div className='input-tweet' >
                 <textarea 
                 name="Tweet"
-                type="text" 
-               /*  value={tweetUpload.Tweet}  */
-                placeholder="Tweet input" 
-                /* onChange={handleInputs}  */
+                type="text"
+                id='input-tweet'
+                placeholder="What's happening?" 
                 rows="5" 
                 cols="30" 
                 />
-                <div>
-                    <h5>17</h5>
+                <div className='sub-textarea'>
+                    <h5>17 </h5>
                     <h5>200 max.</h5>
                 </div>
-                {/* <img src={postOff} alt="img not found" /> */}
+                <div className='container-post-button'>
+                    <img src={postOff} className='post-button' alt="img not found" />
+                </div>
+                
             </div>
             
             

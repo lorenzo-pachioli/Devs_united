@@ -1,0 +1,63 @@
+.card{
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.card-img{
+    width: 30%;
+    height: 100%;
+}
+
+.card-subcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 70%;  
+}
+
+.tweet{
+    width: 100%;
+    text-align: left;  
+    overflow-wrap:break-word;
+    
+}
+
+.card-subcontainer hr{
+    width: 100%;
+    margin-top:0,20px,0, 20px;
+}
+
+.likes{
+    height: 20%;
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.likes button{
+    width: 30%;
+    height: 100%;
+    background: none;
+    color: inherit;
+    border: none;
+    
+}
+.likes img{
+    width: 100%;
+}

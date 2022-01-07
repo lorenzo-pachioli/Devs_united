@@ -1,11 +1,15 @@
 import React from 'react';
-/* import TweetCard from '../TweetCard'; */
+import "./ListTweet.css";
+import TweetCard from '../TweetCard'; 
 
 export default function ListTweets(){
     return (
-        <div>
-            <div>
-                <h1>Lista de tweets</h1>
+            <div className='feed-list-container'>
+                
+                <TweetCard Name={"Lorenzo"} Tweet={"Hola mundo"} Likes={5} id={0} />
+                <TweetCard Name={"Lorenzo"} Tweet={"Hola mundooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"} Likes={5} id={0} />
+                <TweetCard Name={"Lorenzo"} Tweet={"Hola mundo"} Likes={5} id={0} />
+                
                 {/* {tweetList.map((tweet)=>{
                     return(
                         <div key={tweetList.indexOf(tweet)} >
@@ -21,6 +25,6 @@ export default function ListTweets(){
                     )
                 } */}
             </div>
-        </div>
+        
     )
 };
