@@ -1,33 +1,36 @@
 .input-container{
     display:flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 1%;
     width: 100%;
     height: 200px;
     background-color: #150714;
+    border-bottom:2px solid #60265B;
 
 }
 
 .inputuser-img{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-start;
-    height: 80%;
-    width: 33%;
+    height: 10vh;
+    width: 10vh;
+    margin-left: 28%;
     
     
 
 }
 
 .inputuser-img img{
-    width: 60px;
-    height: 60px;
+    width: 80%;
+    height: 80%;
     
 }
 
 .input-tweet{
     width: 33%;
-    height: 80%;
+    height: 90%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -36,26 +39,33 @@
     
 }
 
+
 .input-tweet textarea{
-    width: 350px;
-    height: 113px;
+    width: 95%;
+    height: 20vh;
     background-color: #2F112D;
     color: #914D8B;
-
+    resize: none;
+    border-style: none;
 }
 
 .sub-textarea{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 350px;
+    width: 95%;
+    
+}
+
+.sub-textarea :last-child{
+    color:#F50D5A;
 }
 
 .container-post-button{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    width: 350px;
+    width: 95%;
     height: 50px;
 }
 

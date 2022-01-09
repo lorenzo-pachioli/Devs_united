@@ -10,18 +10,21 @@ export default function InputTweet(){
     return (
         <div className='input-container' >
             <div className='inputuser-img'>
-                <img src={userImg} className='user-img' alt="img not found" />
+                <img src={userImg} className='user-img'  alt="img not found" /> 
             </div>
             
             <div className='input-tweet' >
-                <textarea 
-                name="Tweet"
-                type="text"
-                id='input-tweet'
-                placeholder="What's happening?" 
-                rows="5" 
-                cols="30" 
-                />
+                    <textarea
+                        name="Tweet"
+                        type="text"
+                        id='input-tweet'
+                        placeholder="What's happening?" 
+                        rows="5" 
+                        cols="30" 
+                        maxlength="200"
+                        />
+                
+                
                 <div className='sub-textarea'>
                     <h5>17 </h5>
                     <h5>200 max.</h5>

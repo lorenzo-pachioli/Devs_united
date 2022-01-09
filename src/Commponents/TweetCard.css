@@ -1,9 +1,9 @@
 .card{
-    width: 30vw;
+    width: 44vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+    
     
 }
 
@@ -16,8 +16,9 @@
 }
 
 .card-img{
-    width: 30%;
-    height: 100%;
+    width: 10vh;
+    height: 10vh;
+    
 }
 
 .card-subcontainer{
@@ -25,19 +26,45 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 70%;  
-}
-
-.tweet{
-    width: 100%;
-    text-align: left;  
-    overflow-wrap:break-word;
+    width: 33vw;  
     
 }
 
-.card-subcontainer hr{
-    width: 100%;
-    margin-top:0,20px,0, 20px;
+.name-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 3%;
+    
+}
+
+.name{
+    color:#2E132C;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.333333px;
+    vertical-align: text-top;
+   
+}
+
+.date{
+    color: white;
+    text-align: left;
+    width: 10vw;
+    text-indent: 10px;
+}
+
+.tweet{
+    width: 95%;
+    text-align: left;
+    margin-left: 3%;
+    padding-top: 10px;
+    color:white;
+    
 }
 
 .likes{
@@ -47,7 +74,11 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    
+    color: #F50D5A;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 21px;
+    padding-top: 10px;
 }
 
 .likes button{
@@ -60,4 +91,10 @@
 }
 .likes img{
     width: 100%;
+}
+
+.card hr{
+    background-color:#60265B;
+    height:2px;
+    border-style: none;
 }

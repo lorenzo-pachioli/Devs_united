@@ -5,6 +5,11 @@ import heartOff from "../Resourses/heartOff.svg";
 import user from "../Resourses/user.png";
 
 export default function TweetCard({id, Likes, Tweet, Name}){
+
+    const namebackground = {
+        backgroundColor: "#800FFF"
+    }
+
     return (
         <div className="card" >
              <div className="card-container" >
@@ -12,8 +17,11 @@ export default function TweetCard({id, Likes, Tweet, Name}){
                     <img src={user} alt="img not found" />
                 </div>
                 <div className="card-subcontainer">
-                    <div className="name">{Name}</div>
-                    <hr />
+                    <div className="name-date">
+                        <div className="name" style={namebackground}>{Name}</div> 
+                        <div className="date">- 5 june</div>
+                    </div>
+                    
                     <div className="tweet">{Tweet}</div>
                     <div className="likes">
                         <button name = "Likes" /* onClick={handleLikes} */ value={id}>
