@@ -1,0 +1,23 @@
+.user-title{
+    width: 99vw;
+    height: 170px;
+    background-color: #150714;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.user-title img {
+    height: 60%;
+    border-radius: 50%;
+    margin-top: 2vh;
+}
+
+.user-title h1{
+    
+    color: #150714;
+    
+    vertical-align: text-top;
+}

@@ -1,15 +1,24 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import React from "react";
+import "./User.css"
 import orancia from "../Resourses/ornacia.png";
 import UserTopBar from "../Commponents/User/UserTopBar";
-import UserPost from "../Commponents/User/UserPost";
-import UserFavorites from "../Commponents/User/UserFavorites";
+
 
 export default function User(){
+
+    const backColor= {
+        backgroundColor:"#FFEA5C"
+    }
+
     return(
         <div>
             <UserTopBar />
-            <img src={orancia} alt="img not found" />
+            <div className="user-title">
+                <img src={orancia} alt="img not found" />
+                <h1 style={backColor}>username</h1>
+            </div>
+            
 
             <div>
                 <Outlet />
