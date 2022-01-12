@@ -19,10 +19,33 @@
     justify-content: center;
 }
 
-.link{
-    position:absolute;
-    height: 5vh;
-    width: 30vh;
-    margin-left: 14.5vw;
+.post-top h2{
+    color: #150714;
+    height: 35px;
+    width: 200px;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #60265B;
+}
+
+.post-top .link{
+    color: #60265B;
+    text-decoration: none;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 35px;
+    width: 200px;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
     
+}
+
+.post-top .link:hover{
+    border: 1px solid #60265B;
 }
