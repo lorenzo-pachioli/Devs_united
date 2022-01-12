@@ -1,7 +1,7 @@
 import React from 'react';
-import userImg from "./user.png";
 import "./InputTweet.css";
 import postOff from "./postOff.svg";
+import ornacia from './ornacia.png';
 /* import postOn from "src/Resourses/post on.svg";  */
 
 export default function InputTweet(){
@@ -10,7 +10,7 @@ export default function InputTweet(){
     return (
         <div className='input-container' >
             <div className='inputuser-img'>
-                <img src={userImg} className='user-img'  alt="img not found" /> 
+                <img src={ornacia}   alt="img not found" /> 
             </div>
             
             <div className='input-tweet' >
