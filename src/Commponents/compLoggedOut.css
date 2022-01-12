@@ -1,0 +1,49 @@
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color:white;
+}
+
+.text{
+    width: 35vh;
+    height: 7vh;
+    margin-top: 5vh;
+}
+
+h3{
+    width: 100%;
+    height: 100%;
+    color:white;
+    text-align: justify;
+    text-justify:distribute-all-lines;
+    text-align-last: justify;
+    letter-spacing: 0.8px;
+}
+
+.loggedOut-container .link{
+    height: 5vh;
+    width: 100%;
+    margin-top: 5vh;
+    background-color: #4285F4;
+    border-style: none;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.loggedOut-container  .link:hover{
+    height: 5.5vh;
+    width: 105%;
+}
+
+.box {
+    background-color: white;
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20%;
+}

@@ -1,19 +1,25 @@
 import { Link } from "react-router-dom";
 import React from 'react';
+import google from  "../Resourses/Group7.png";
+import "./compLoggedOut.css";
 
 export default function CompLoggedOut(){
     return (
-        <div>
-            <div>
+        <div className="loggedOut-container">
+            <div className="title">
                 <h1>LOREM</h1>
                 <h1>IPSUM DOLOR</h1>
             </div>
-            <div>
-                <h3>Lorem ipsum dolor sit amet,</h3>
-                <h3>consectetur adipiscing elit</h3>
+            <div className="text">
+                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                
             </div>
-            <button>Sign in with google</button>
-            <Link to="/feed">Continue</Link>
+            <Link to="/feed" className="link">
+                <div className="box">
+                    <img src={google} alt="img not found" />
+                </div>
+                Sign in with google
+            </Link>
             
         </div>
     )

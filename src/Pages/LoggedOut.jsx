@@ -1,16 +1,19 @@
 import React from 'react';
 import CompLoggedOut from '../Commponents/CompLoggedOut';
 import logoBig from '../Resourses/logoBig.svg';
+import "./LoggedOut.css";
 
 export default function LoggedOut(){
     return (
-        <div display="flex" flex-direction="row">
-            <img src={logoBig} alt="img not found" />
-            <div>
-                <CompLoggedOut />
+        <main>
+            <div className='img-out'>
+                <img src={logoBig} alt="img not found" />
             </div>
-            <h5>© 2020 Devs_United - BETA</h5>
             
-        </div>
+            <div className='menu'>
+                <CompLoggedOut />
+                <h5>© 2020 Devs_United - <span className='beta'>BETA</span> </h5>
+            </div>
+        </main>
     )
 }
