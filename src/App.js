@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Route, Routes, } from "react-router-dom";
 import getColections, {setDocument, deleteDocument, updateDocument } from "./Services/Operations";
 import Welcome from "./Pages/Welcome";
@@ -9,23 +9,29 @@ import User from "./Pages/User";
 import LoggedOut from "./Pages/LoggedOut";
 import UserPost from "./Commponents/User/UserPost";
 import UserFavorites from "./Commponents/User/UserFavorites";
+import { AppContext } from './Hooks/AppContext';
 /* import {db} from "./Services/firebase";
 import { addDoc, collection } from "firebase/firestore"; */
 
 
 
 function App() {
+  const {
+          tweetList,
+          setList,
+          tweetUpload,
+          setTweet,
+          tweetUpdate,
+          setUpdate,
+          buttonUpload,
+          setButtonUpload,
+          tweetDelete,
+          setTweetDelete,
+          buttonDelete,
+          setButtonDelete
+   } = useContext(AppContext);
 
-  const [tweetList, setList] = useState([]);
-  const [tweetUpload, setTweet] = useState({
-    Name:"",
-    Tweet:"",
-    Likes: 0
-  });
-  const [tweetUpdate, setUpdate] = useState({});
-  const [buttonUpload , setButtonUpload] = useState(false);
-  const [tweetDelete, setTweetDelete] = useState(null);
-  const [buttonDelete, setButtonDelete] = useState(false);
+  
 
   
 
