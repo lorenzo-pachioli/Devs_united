@@ -4,7 +4,9 @@ import heartOn from "../Resourses/heartOn.svg";
 import heartOff from "../Resourses/heartOff.svg";
 import user from "../Resourses/user.png";
 
-export default function TweetCard({id, Likes, Tweet, Name}){
+export default function TweetCard({id, Likes, Tweet, Name,Date}){
+
+    
 
     const namebackground = {
         backgroundColor: "#800FFF"

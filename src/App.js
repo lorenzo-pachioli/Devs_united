@@ -117,20 +117,8 @@ function App() {
  
  
 
-  const handleInputs= (e) => {
-    
-    let tweet = {
-      ...tweetUpload,
-      [e.target.name] : e.target.value
-      
-    }
-    setTweet(tweet);
-  }
 
-  const handleButton = (e) => {
-    e.preventDefault();
-    setButtonUpload(true);
-  }
+  
 
   const handleLikes = (event) => {
     const newList = tweetList.map((tweet)=>{

@@ -72,3 +72,11 @@
 .post-button{
     height: 70%;
 }
+
+.post-button:hover{
+    height: 75%;
+}
+
+.post-button:active{
+    height: 67%;
+}
