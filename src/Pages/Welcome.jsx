@@ -5,7 +5,7 @@ import "./welcome.css";
 
 export default function Welcome(){
     return (
-        <main >
+        <div className='main' >
             <div className='img-welcome'>
                 <img src={logoBig} className='logo' alt="img not found" />
             </div>
@@ -18,6 +18,6 @@ export default function Welcome(){
             </div>
             
             
-        </main>
+        </div>
     )
 }

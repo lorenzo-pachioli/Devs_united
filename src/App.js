@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState, useContext } from 'react';
-import { Route, Routes, } from "react-router-dom";
+import { Link, Route, Routes, } from "react-router-dom";
 import getColections, {setDocument, deleteDocument, updateDocument } from "./Services/Operations";
 import Welcome from "./Pages/Welcome";
 import Feed from "./Pages/Feed";
@@ -28,7 +28,8 @@ function App() {
           tweetDelete,
           setTweetDelete,
           buttonDelete,
-          setButtonDelete
+          setButtonDelete, 
+          user
    } = useContext(AppContext);
 
   
@@ -146,61 +147,22 @@ function App() {
     <div className="App">
       <Routes>
           <Route path="/feed" element={<Feed />} />
-          <Route path="/user" element={<User />}>
-            <Route path="post" element={<UserPost />} />
-            <Route path="favorites" element={<UserFavorites />} />
+          <Route>
+            {user ? (
+              <Route path="/user" element={<User />}>
+                <Route path="post" element={<UserPost />} />
+                <Route path="favorites" element={<UserFavorites />} />
+              </Route>
+
+            ) : (
+              ""
+            )}
           </Route>
-          <Route path="/loggedOut" element={<LoggedOut />} />
-          <Route exact path="/" element={<Welcome />} />
+          
+          <Route exact path="/welcome" element={<Welcome />} />
+          <Route exact path="/" element={<LoggedOut />} />
         
       </Routes>
-      
-      
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <textarea 
-          name="Tweet"
-          type="text" 
-          value={tweetUpload.Tweet} 
-          placeholder="Tweet input" 
-          onChange={handleInputs} 
-          rows="5" 
-          cols="30" 
-        />
-        <div display="flex" justify-content= "space-between">
-          <input 
-            name="Name"
-            type="text" 
-            value={tweetUpload.Name} 
-            placeholder="Name input" 
-            onChange={handleInputs} 
-          />
-
-          <button onClick={handleButton} value={buttonUpload}>Send tweet </button>
-
-        </div>
-        
-        <div>
-          {
-            tweetList.map((tweet)=>{
-              return(
-                <div key={tweetList.indexOf(tweet)} >
-                  <div display="flex" flex-direction="row">
-                    <div>{tweet.Name} ({tweet.id}) : {tweet.Tweet}</div>
-                    <button name = "Likes" onClick={handleLikes} value={tweet.id}>{tweet.Likes}</button>
-                    <button onClick={()=>{return(
-                       setTweetDelete(tweet.id),
-                       setButtonDelete(true))}} >X</button>
-                  </div>
-                  
-                </div>
-              )
-            }
-            )
-          }
-        </div>
-      </header> */}
     </div>
   );
 }

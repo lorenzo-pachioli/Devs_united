@@ -25,7 +25,6 @@ h3{
     height: 5vh;
     width: 100%;
     margin-top: 5vh;
-    background-color: #4285F4;
     border-style: none;
     text-decoration: none;
     color: white;
@@ -36,6 +35,13 @@ h3{
 .loggedOut-container  .link:hover{
     height: 5.5vh;
     width: 105%;
+}
+.blue{
+    background-color: #4285F4;
+}
+.green{
+    background-color: #00DA76;
+    justify-content: center;
 }
 
 .box {

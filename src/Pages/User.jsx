@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
-import React from "react";
+import React, {useContext} from "react";
 import "./User.css"
 import orancia from "../Resourses/ornacia.png";
 import UserTopBar from "../Commponents/User/UserTopBar";
+import { AppContext } from '../Hooks/AppContext';
 
 
 export default function User(){
+
+    const {user} = useContext(AppContext);
 
     const backColor= {
         backgroundColor:"#FFEA5C"
@@ -15,8 +18,8 @@ export default function User(){
         <div>
             <UserTopBar />
             <div className="user-title">
-                <img src={orancia} alt="img not found" />
-                <h1 style={backColor}>username</h1>
+                <img src={`${user.photo}`} alt="img not found" />
+                <h1 style={backColor}>{`${user.name}`}</h1>
             </div>
             
 

@@ -9,7 +9,7 @@ export default function FeedTopBar(){
             <Link to="/feed" className="username">
                 <h4>username</h4>
             </Link>
-            <Link to="/LoggedOut" className="logout">
+            <Link to="/" className="logout">
                 <h4>Log out</h4>
             </Link>
             

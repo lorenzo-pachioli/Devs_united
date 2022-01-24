@@ -19,8 +19,17 @@
 .card-img{
     width: 10vh;
     height: 10vh;
+    display: flex;
+    justify-content: center;
     
 }
+
+.card-img img{
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+
 
 .card-subcontainer{
     display: flex;

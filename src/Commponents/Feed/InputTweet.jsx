@@ -1,29 +1,36 @@
 import React, {useContext,useState} from 'react';
 import "./InputTweet.css";
-import postOff from "../Resourses/postOff.svg";
-import postOn from "../Resourses/postOn.svg";
-import ornacia from '../Resourses/ornacia.png';
-import { AppContext } from '../Hooks/AppContext';
+import postOff from "../../Resourses/postOff.svg";
+import postOn from "../../Resourses/postOn.svg";
+import ornacia from '../../Resourses/ornacia.png';
+import { AppContext } from '../../Hooks/AppContext';
 
 export default function InputTweet(){
   
-    const {tweetUpload, setTweet, setButtonUpload, buttonUpload} = useContext(AppContext);
+    const {tweetUpload, setTweet, setButtonUpload, buttonUpload, user} = useContext(AppContext);
     const [inputLong, setInputLong] = useState(0)
     
     
     const handleInputs= (e) => {
+        if (user ===true) {
+            let tweet = {
+                /* ...tweetUpload, */
+                [e.target.name] : e.target.value,
+                Likes: "0",
+                Name: `${user.name}`,
+                photo: `${user.photo}`,
+                uid: `${user.uid}`,
+                email: `${user.email}`
+                }
+                setTweet(tweet);
+                setInputLong(tweet.Tweet.length);  
+            }else{
+                alert("you must be logged in to write tweet");
+            }
         const d = new Date();
         const date = d.getDate();
         console.log(date);
         
-        let tweet = {
-        /* ...tweetUpload, */
-        [e.target.name] : e.target.value,
-        Likes: "0",
-        Name: "Lorenzo"
-        }
-        setTweet(tweet);
-        setInputLong(tweet.Tweet.length);
         
     }
 
@@ -36,7 +43,13 @@ export default function InputTweet(){
     return (
         <div className='input-container' >
             <div className='inputuser-img'>
-                <img src={ornacia}   alt="img not found" /> 
+                {user ? (
+                    <img src={`${user.photo}`}   alt="img not found" />
+
+                ) : (
+                    <img src={ornacia}   alt="img not found" />
+                )}
+                 
             </div>
             
             <div className='input-tweet' >
@@ -49,7 +62,8 @@ export default function InputTweet(){
                         placeholder="What's happening?" 
                         rows="5" 
                         cols="30" 
-                        maxlength="200"
+                        maxLength="200"
+                        disabled={user ? (true) : (false)}
                         />
                 
                 

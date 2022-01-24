@@ -6,12 +6,13 @@
 .container-welcome{
     display: flex; 
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     width: 50%;
-    height: 45vh; 
+    min-height: 90%; 
     color:white;
     margin-bottom: 10%;
+    border: 1px solid white;
 }
 
 .container-welcome h1{
@@ -82,4 +83,9 @@
     text-decoration: none;
     color: white;
     font-size: 150%;
+}
+
+.red-text{
+    color:#F50D5A;
+    
 }

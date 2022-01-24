@@ -1,25 +1,18 @@
-import { Link } from "react-router-dom";
 import React, {useContext} from 'react';
-import "./UserPost.css";
+import "./ListTweet.css";
 import TweetCard from '../TweetCard'; 
 import { AppContext } from '../../Hooks/AppContext';
 
-export default function UserPost(){
+export default function ListTweets(){
 
-    const {tweetList, user} = useContext(AppContext);
-    const postList = tweetList.filter((tweet)=> {
-        return tweet.uid === user.uid;
-    })
-    console.log(postList);
-    console.log(tweetList)
+    const {tweetList} = useContext(AppContext);
 
     return (
-        <div className="post-container">
-            <div className="post-top">
-                <h2>POST</h2>
-                <Link to="/user/favorites" className="link" >FAVORITES </Link>
-            </div>
-            {postList.map((tweet)=>{
+            <div className='feed-list-container'>
+                
+               
+                
+                {tweetList.map((tweet)=>{
                     return(
                         <div key={tweetList.indexOf(tweet)} >
                             <TweetCard 
@@ -35,6 +28,7 @@ export default function UserPost(){
                     }
                     )
                 }
-        </div>
+            </div>
+        
     )
-}
+};

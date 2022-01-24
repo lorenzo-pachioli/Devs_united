@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./TweetCard.css";
 import heartOn from "../Resourses/heartOn.svg";
 import heartOff from "../Resourses/heartOff.svg";
-import user from "../Resourses/user.png";
+import userImg from "../Resourses/user.png";
+import { AppContext } from '../Hooks/AppContext';
 
-export default function TweetCard({id, Likes, Tweet, Name,Date}){
+export default function TweetCard({id, Likes, Tweet, Name, Date, photo}){
 
-    
+    const {user} = useContext(AppContext);
 
     const namebackground = {
         backgroundColor: "#800FFF"
@@ -16,12 +17,17 @@ export default function TweetCard({id, Likes, Tweet, Name,Date}){
         <div className="card" >
              <div className="card-container" >
                 <div className="card-img">
-                    <img src={user} alt="img not found" />
+                    {photo || user != null ? (
+                        <img src={photo} alt="" />
+                    ) : (
+                        <img src={userImg} alt="" />
+                    )}
+                    
                 </div>
                 <div className="card-subcontainer">
                     <div className="name-date">
                         <div className="name" style={namebackground}>{Name}</div> 
-                        <div className="date">- 5 june</div>
+                        <div className="date">- {`${Date}`} </div>
                     </div>
                     
                     <div className="tweet">{Tweet}</div>
