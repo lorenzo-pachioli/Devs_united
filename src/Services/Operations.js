@@ -1,7 +1,4 @@
-/* import { onSnapshot } from 'firebase/firestore'; */
-
-import {collection, getDocs, addDoc, deleteDoc , doc, updateDoc, setDoc } from 'firebase/firestore/lite';
-/* import firebase, {firestore} from "./firebase"; */
+import {collection, getDocs, getDoc, addDoc, deleteDoc , doc, updateDoc, setDoc } from 'firebase/firestore/lite';
 import {db} from "./firebase";
 
  
@@ -23,7 +20,7 @@ export default async function getColections(coll){
 }
 
 export async function getDataById(coll, id){
-  const docRef = await getDocs(doc(db, coll, id), );
+  const docRef = await getDoc(doc(db, coll, id));
   const data = docRef.data();
   return data;
 }
@@ -34,7 +31,7 @@ export async function setDocument(coll, data){
 }
 
 export async function setData(coll, id, data){
-  const docRef = await setDoc(collection(db, coll, id), data);
+  const docRef = await setDoc(doc(db, coll, id), data);
   return docRef;
 }
 
