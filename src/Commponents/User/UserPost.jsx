@@ -21,7 +21,7 @@ export default function UserPost(){
             </div>
             {postList.map((tweet)=>{
                     return(
-                        <div key={tweetList.indexOf(tweet)} >
+                        <div key={postList.indexOf(tweet)} >
                             <TweetCard 
                             id={tweet.uid}
                             Name={tweet.name}

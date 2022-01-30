@@ -108,3 +108,11 @@
     height:2px;
     border-style: none;
 }
+
+.delete{
+    color:#F50D5A;
+    border-style: none;
+    background-color: inherit;
+    font-size: 18px;
+    font-weight: 800;
+}

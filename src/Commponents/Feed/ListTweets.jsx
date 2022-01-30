@@ -16,12 +16,13 @@ export default function ListTweets(){
                     return(
                         <div key={tweetList.indexOf(tweet)} >
                             <TweetCard 
-                            id={tweet.uid}
+                            uid={tweet.uid}
                             Name={tweet.name}
                             Tweet={tweet.tweet}
                             Likes={tweet.likes}
                             photo={tweet.photo}
                             Date={"5 june"}
+                            id={tweet.id}
                             />
                         </div>
                     )

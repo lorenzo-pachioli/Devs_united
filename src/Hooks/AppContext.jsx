@@ -5,16 +5,12 @@ export const AppContext = React.createContext();
 export default function AppProvider({ children }) {
 
     const [tweetList, setList] = useState([]);
-    const [tweetUpload, setTweet] = useState({
-        Name:"",
-        Tweet:"",
-        Likes: 0
-    });
+    const [tweetUpload, setTweet] = useState({});
     const [tweetUpdate, setUpdate] = useState({});
     const [buttonUpload , setButtonUpload] = useState(false);
     const [tweetDelete, setTweetDelete] = useState(null);
     const [buttonDelete, setButtonDelete] = useState(false);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
 
     return (
         <AppContext.Provider

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useState, useContext } from 'react';
-import { Link, Route, Routes, } from "react-router-dom";
+import React, { useEffect, useContext } from 'react';
+import { Route, Routes, } from "react-router-dom";
 import getColections, {setDocument, deleteDocument, updateDocument } from "./Services/Operations";
 import Welcome from "./Pages/Welcome";
 import Feed from "./Pages/Feed";
@@ -10,8 +10,9 @@ import LoggedOut from "./Pages/LoggedOut";
 import UserPost from "./Commponents/User/UserPost";
 import UserFavorites from "./Commponents/User/UserFavorites";
 import { AppContext } from './Hooks/AppContext';
-/* import {db} from "./Services/firebase";
-import { addDoc, collection } from "firebase/firestore"; */
+import {onAuthStateChanged } from "firebase/auth";
+import {auth} from "./Services/firebase";
+
 
 
 
@@ -29,10 +30,31 @@ function App() {
           setTweetDelete,
           buttonDelete,
           setButtonDelete, 
-          user
+          user,
+          setUser
    } = useContext(AppContext);
 
-  
+   
+
+  useEffect(() => {
+
+    async function currentUser(){
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log(user);
+          setUser({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+            uid: user.uid
+        })
+        } 
+        
+      });
+    }
+
+    currentUser();
+  },[setUser]);
 
   
 
@@ -42,21 +64,23 @@ function App() {
       const tweets = await getColections("Tweets");
       setList(tweets);
     }
-
+    
     getData();
 
-  },[]);
+  },[setList]);
+
+  
 
   /* useEffect para subir un tweet nuevo a la coleccion de firebase */
   useEffect(() => {
     async function uploadTweet(){
       
       const docRef = await setDocument("Tweets", tweetUpload);
-      
       setList([...tweetList,
-         {...tweetUpload,
-          id:docRef.id
-      }])
+        {...tweetUpload,
+          id: docRef.id
+     }])
+     
       return docRef;
     }
     const upload = ()=> {
@@ -81,7 +105,9 @@ function App() {
   useEffect(() => {
     async function deleteTweet(){
       const docRef = await deleteDocument("Tweets", tweetDelete);
+      console.log(tweetDelete)
       const newList = tweetList.filter((ID)=>ID.id !== `${tweetDelete}`);
+      console.log(newList)
       setList(newList);
       return docRef;
     }

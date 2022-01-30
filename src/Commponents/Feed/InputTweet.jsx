@@ -7,14 +7,14 @@ import { AppContext } from '../../Hooks/AppContext';
 
 export default function InputTweet(){
   
-    const {tweetUpload, setTweet, setButtonUpload, buttonUpload, user} = useContext(AppContext);
+    const {tweetUpload, setTweet, setButtonUpload, buttonUpload, user, setList, tweetList} = useContext(AppContext);
     const [inputLong, setInputLong] = useState(0)
     
     
     const handleInputs= (e) => {
-        if (user ===true) {
+        if (user) {
             let tweet = {
-                /* ...tweetUpload, */
+                
                 [e.target.name] : e.target.value,
                 Likes: "0",
                 Name: `${user.name}`,
@@ -38,6 +38,7 @@ export default function InputTweet(){
         e.preventDefault();
         setButtonUpload(true);
         setInputLong(0);
+        
     }
     
     return (
@@ -63,7 +64,7 @@ export default function InputTweet(){
                         rows="5" 
                         cols="30" 
                         maxLength="200"
-                        disabled={user ? (true) : (false)}
+                        disabled={user ? (false) : (true)}
                         />
                 
                 

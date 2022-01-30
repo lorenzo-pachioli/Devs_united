@@ -1,5 +1,5 @@
 import "firebase/firestore";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut,  onAuthStateChanged  } from "firebase/auth";
 import {setData, getDataById} from "./Operations";
 import { auth } from "./firebase";
 
@@ -36,5 +36,7 @@ export default async function userAuth(){
       }
     };
     
-
+export const loggedOut = async () => {
+   signOut(auth);
+};
 
