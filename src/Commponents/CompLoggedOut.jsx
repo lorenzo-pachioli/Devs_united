@@ -4,6 +4,7 @@ import google from  "../Resourses/Group7.png";
 import "./compLoggedOut.css";
 import userAuth from "../Services/autentication";
 import { AppContext } from '../Hooks/AppContext';
+import {getDataById} from "../Services/Operations";
 
 export default function CompLoggedOut(){
 
@@ -12,11 +13,13 @@ export default function CompLoggedOut(){
     const singIn = async () => {
         console.log(user);
         const newUser =await userAuth();
+        const oldUser = await getDataById("Users", newUser.uid);
         setUser({
             name: newUser.displayName,
             email: newUser.email,
             photo: newUser.photoURL,
-            uid: newUser.uid
+            uid: newUser.uid,
+            likes: oldUser.likes
         }) 
         console.log(user)
     }

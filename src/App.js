@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Route, Routes, } from "react-router-dom";
-import getColections, {setDocument, deleteDocument, updateDocument } from "./Services/Operations";
+import getColections, {setDocument, deleteDocument, updateLikes, updateUser, getDataById } from "./Services/Operations";
 import Welcome from "./Pages/Welcome";
 import Feed from "./Pages/Feed";
 import User from "./Pages/User";
@@ -12,6 +12,7 @@ import UserFavorites from "./Commponents/User/UserFavorites";
 import { AppContext } from './Hooks/AppContext';
 import {onAuthStateChanged } from "firebase/auth";
 import {auth} from "./Services/firebase";
+import {arrayUnion} from "firebase/firestore";
 
 
 
@@ -33,28 +34,51 @@ function App() {
           user,
           setUser
    } = useContext(AppContext);
-
+   const [uidProb, setUid] = useState()
    
 
   useEffect(() => {
 
     async function currentUser(){
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(auth,  (user) => {
         if (user) {
-          console.log(user);
+          setUid(user)
           setUser({
             name: user.displayName,
             email: user.email,
             photo: user.photoURL,
             uid: user.uid
+          
         })
         } 
-        
-      });
+      })
+      
     }
 
     currentUser();
-  },[setUser]);
+
+    
+    
+  },[setUid, setUser ]);
+
+  useEffect(() => {
+    async function userLikes(){
+      if(uidProb){
+        const oldUser = await getDataById("Users", uidProb.uid);
+        setUser({
+            name: uidProb.displayName,
+            email: uidProb.email,
+            photo: uidProb.photoURL,
+            uid: uidProb.uid,
+            likes: oldUser.likes
+          
+        })
+      }
+      
+    }
+
+    userLikes();
+  }, [uidProb, setUser]);
 
   
 
@@ -123,16 +147,26 @@ function App() {
     
   }, [ tweetDelete, buttonDelete, tweetList]);
 
+  //useEfect para actualizar likes
+
   useEffect(() => {
     
      async function updateTweet(){
-       if (typeof tweetUpdate.Likes !== "undefined"){
-        const docRef = await updateDocument("Tweets", tweetUpdate.id, tweetUpdate.Likes );
-        
+       if (typeof tweetUpdate.likes !== "undefined"){
+        const docRef = await updateLikes("Tweets", tweetUpdate.id, tweetUpdate.likes );
+        setUpdate("");
         return docRef;
        }
     } 
+    async function upDateUser(){
+      if (typeof tweetUpdate.id !== "undefined"){
+       const docRef = await updateUser("Users", user.uid, String(tweetUpdate.id));
+       
+       return docRef;
+      }
+   } 
     updateTweet();
+    upDateUser();
     
     
     
@@ -147,24 +181,7 @@ function App() {
 
   
 
-  const handleLikes = (event) => {
-    const newList = tweetList.map((tweet)=>{
-      if(tweet.id === event.target.value){
-        const newLike = {
-          Name: tweet.Name,
-          Tweet: tweet.Tweet,
-          Likes: tweet.Likes + 1,
-          id: tweet.id
-        }
-        setUpdate(newLike);
-        return newLike;
-      }else{
-        return tweet;
-      }
-    });
-    setList(newList);
-
-  }
+ 
   
 
   

@@ -18,7 +18,8 @@ const addUserToFirestore = async (user) => {
         name: displayName,
         email: email,
         photo: photoURL,
-        uid: uid
+        uid: uid,
+        likes:[]
       });
     }
 };

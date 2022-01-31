@@ -1,4 +1,4 @@
-import {collection, getDocs, getDoc, addDoc, deleteDoc , doc, updateDoc, setDoc } from 'firebase/firestore/lite';
+import {collection, getDocs, getDoc, addDoc, deleteDoc , doc, updateDoc, setDoc,  arrayUnion } from 'firebase/firestore/lite';
 import {db} from "./firebase";
 
  
@@ -10,7 +10,7 @@ export default async function getColections(coll){
   const data = tweetsList.docs.map(doc => {return {
     name:doc.data().Name,
     tweet:doc.data().Tweet,
-    likes:doc.data().Likes,
+    likes:doc.data().likes,
     photo:doc.data().photo,
     email:doc.data().email,
     uid:doc.data().uid,
@@ -40,9 +40,16 @@ export async function deleteDocument(coll, id){
   return docRef;
 }
 
-export async function updateDocument(coll, id, likeNum){
+export async function updateLikes(coll, id, likeNum){
   const docRef = await updateDoc(doc(db, coll, id), {
-    Likes: likeNum
+    likes: likeNum
+  });
+  return docRef;
+}
+
+export async function updateUser(coll, id, likeNum){
+  const docRef = await updateDoc(doc(db, coll, id), {
+    likes: arrayUnion(likeNum)
   });
   return docRef;
 }
