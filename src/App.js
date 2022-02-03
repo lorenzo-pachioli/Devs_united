@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useContext, useState } from 'react';
 import { Route, Routes, } from "react-router-dom";
-import getColections, {setDocument, deleteDocument, updateLikes, updateUser, getDataById } from "./Services/Operations";
+import getColections, {setDocument, deleteDocument, updateLikes, updateUser, getDataById, deleteUser } from "./Services/Operations";
 import Welcome from "./Pages/Welcome";
 import Feed from "./Pages/Feed";
 import User from "./Pages/User";
@@ -12,7 +12,6 @@ import UserFavorites from "./Commponents/User/UserFavorites";
 import { AppContext } from './Hooks/AppContext';
 import {onAuthStateChanged } from "firebase/auth";
 import {auth} from "./Services/firebase";
-import {arrayUnion} from "firebase/firestore";
 
 
 
@@ -32,7 +31,9 @@ function App() {
           buttonDelete,
           setButtonDelete, 
           user,
-          setUser
+          setUser, 
+          setArrayDel, 
+          arrayDelete
    } = useContext(AppContext);
    const [uidProb, setUid] = useState()
    
@@ -47,7 +48,8 @@ function App() {
             name: user.displayName,
             email: user.email,
             photo: user.photoURL,
-            uid: user.uid
+            uid: user.uid,
+            likes:[]
           
         })
         } 
@@ -162,11 +164,22 @@ function App() {
       if (typeof tweetUpdate.id !== "undefined"){
        const docRef = await updateUser("Users", user.uid, String(tweetUpdate.id));
        
+       
        return docRef;
       }
+    }
+
+      async function deleteIdArray(){
+        if (typeof tweetUpdate.id !== "undefined"){
+         const docRef = await deleteUser("Users", user.uid, String(arrayDelete.id));
+         setArrayDel({})
+         
+         return docRef;
+        }
    } 
     updateTweet();
     upDateUser();
+    deleteIdArray();
     
     
     

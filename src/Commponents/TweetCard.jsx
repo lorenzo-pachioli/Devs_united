@@ -5,67 +5,80 @@ import heartOff from "../Resourses/heartOff.svg";
 import userImg from "../Resourses/user.png";
 import { AppContext } from '../Hooks/AppContext';
 
-export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo}){
+export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, heartOnOff}){
 
-    const {setTweetDelete, setButtonDelete, buttonDelete, user, tweetList, setUpdate, setList} = useContext(AppContext);
+    const {setTweetDelete, setButtonDelete, buttonDelete, user, tweetList, setUpdate, setList, setArrayDel} = useContext(AppContext);
 
-    const [heartOnOff, setHeart] = useState(false)
+    const [heartColor, setColor] = useState(heartOnOff)
+   
 
     const handleDelete =()=>{
         setTweetDelete(`${id}`)
         setButtonDelete(true)
         
         console.log(buttonDelete);
+
     }
 
+   
 
     const handleLikes = () => {
         const changeLike = ()=>{
-            if(heartOnOff){
-                setHeart(false)
+            if(heartOnOff ){
+                heartOnOff = false;
+                setColor(false)
+                
+            }else{
+                heartOnOff = true;
+                setColor(true)
+                
             }
         }
         changeLike();
 
-        user.likes.filter((ID) =>{
-            if(ID === id){
-                return (true)
-            }else{
-                setHeart(true)
-                user.likes.push(id)
-                return (false);
-            }
-        })
-        console.log(heartOnOff)
         
 
         const ID = String(id);
-        console.log(user.likes)
 
         const newList = tweetList.map((tweet)=>{
           if(tweet.id === ID){
-            const newLike = {
-              ...tweet,
-              likes: tweet.likes + 1,
-              
+
+            if(heartOnOff){
+                const newLike = {
+                    ...tweet,
+                    likes: tweet.likes + 1,
+                    
+                }
+                setUpdate(newLike);
+                user.likes.push(newLike.id)
+                
+                return newLike
+            }else{
+                const newLike = {
+                    ...tweet,
+                    likes: tweet.likes - 1,
+                    
+                  }
+                  setUpdate(newLike);
+                  setArrayDel(newLike);
+                  user.likes.pop(newLike.id);
+                  return newLike
             }
             
             
-            setUpdate(newLike);
             
             
-            return newLike;
           }else{
             return tweet;
           }
         });
         setList(newList);
+        
 
          
         
     
       }
-
 
       
 
@@ -101,7 +114,7 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo}){
                     <div className="tweet">{Tweet}</div>
                     <div className="likes">
                         <button name = "Likes" onClick={handleLikes} value={id}>
-                        {heartOnOff ? (
+                        {heartColor  ? (
                             <img src={heartOn} alt="img not found" />
                         ) : (
                             <img src={heartOff} alt="img not found" />

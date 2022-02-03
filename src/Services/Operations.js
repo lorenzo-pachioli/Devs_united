@@ -1,4 +1,4 @@
-import {collection, getDocs, getDoc, addDoc, deleteDoc , doc, updateDoc, setDoc,  arrayUnion } from 'firebase/firestore/lite';
+import {collection, getDocs, getDoc, addDoc, deleteDoc , doc, updateDoc, setDoc,  arrayUnion, arrayRemove } from 'firebase/firestore/lite';
 import {db} from "./firebase";
 
  
@@ -50,6 +50,13 @@ export async function updateLikes(coll, id, likeNum){
 export async function updateUser(coll, id, likeNum){
   const docRef = await updateDoc(doc(db, coll, id), {
     likes: arrayUnion(likeNum)
+  });
+  return docRef;
+}
+
+export async function deleteUser(coll, id, likeNum){
+  const docRef = await updateDoc(doc(db, coll, id), {
+    likes: arrayRemove(likeNum)
   });
   return docRef;
 }
