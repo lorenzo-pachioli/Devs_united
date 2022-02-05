@@ -10,8 +10,40 @@ export default function UserPost(){
     const postList = tweetList.filter((tweet)=> {
         return tweet.uid === user.uid;
     })
-    console.log(postList);
-    console.log(tweetList)
+    
+    const ShowResult = ()=> {
+        return(
+            <div>
+                { user.likes.length > 0 ? (
+                postList.map((tweet)=>{
+                    const heartColor = user.likes.some((ID)=>{
+                        if(ID === tweet.id){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    })
+                    return(
+                        <div key={postList.indexOf(tweet)} >
+                             <TweetCard 
+                                uid={tweet.uid}
+                                Name={tweet.name}
+                                Tweet={tweet.tweet}
+                                Likes={tweet.likes}
+                                photo={tweet.photo}
+                                Date={"5 june"}
+                                id={tweet.id}
+                                heartOnOff = {heartColor }
+                                />
+                        </div>
+                    )
+                    }
+                    )
+                    ) : (<div>Loading...</div>)
+                }
+            </div>
+        )
+    }
 
     return (
         <div className="post-container">
@@ -19,22 +51,13 @@ export default function UserPost(){
                 <h2>POST</h2>
                 <Link to="/user/favorites" className="link" >FAVORITES </Link>
             </div>
-            {postList.map((tweet)=>{
-                    return(
-                        <div key={postList.indexOf(tweet)} >
-                            <TweetCard 
-                            id={tweet.uid}
-                            Name={tweet.name}
-                            Tweet={tweet.tweet}
-                            Likes={tweet.likes}
-                            photo={tweet.photo}
-                            Date={"5 june"}
-                            />
-                        </div>
-                    )
-                    }
-                    )
-                }
+            {Object.keys(user).length > 0 ? (
+                <ShowResult />
+
+            ):(
+                <div>Loading...</div>
+                    
+            )}
         </div>
     )
 }
