@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import TweetCard from '../TweetCard'; 
 import "./UserFavorites.css";
 import { AppContext } from '../../Hooks/AppContext';

@@ -1,5 +1,5 @@
 import "firebase/firestore";
-import { signInWithPopup, GoogleAuthProvider, signOut,  onAuthStateChanged  } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut  } from "firebase/auth";
 import {setData, getDataById} from "./Operations";
 import { auth } from "./firebase";
 

@@ -7,7 +7,7 @@ import { AppContext } from '../../Hooks/AppContext';
 
 export default function InputTweet(){
   
-    const {tweetUpload, setTweet, setButtonUpload, buttonUpload, user, setList, tweetList} = useContext(AppContext);
+    const {tweetUpload, setTweet, setButtonUpload, buttonUpload, user} = useContext(AppContext);
     const [inputLong, setInputLong] = useState(0)
     const month = [" January "," February "," March ", " April "," May "," June "," July "," August "," September "," October "," November "," December "];
 

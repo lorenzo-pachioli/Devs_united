@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useContext, useState } from 'react';
 import { Route, Routes, } from "react-router-dom";
@@ -34,8 +33,7 @@ function App() {
           user,
           setUser, 
           setArrayDel, 
-          arrayDelete, 
-          otherUser
+          arrayDelete
    } = useContext(AppContext);
    const [uidProb, setUid] = useState()
    
@@ -108,9 +106,6 @@ function App() {
         {...tweetUpload,
           id: docRef.id
      }]
-     /* await tweetList.push({...tweetUpload,
-      id: docRef.id
-      }) */
       setList(upDate)
       
       console.log(tweetList)
@@ -133,7 +128,7 @@ function App() {
 
     upload();
     setList(tweetList)
-  }, [buttonUpload, tweetUpload, tweetList]);
+  }, [buttonUpload, tweetUpload, tweetList, setButtonUpload, setList, setTweet]);
 
 
   /* useEffect para eliminar un tweet de la coleccion de firebase */
@@ -156,7 +151,7 @@ function App() {
     runDeleteTweet();
     
     
-  }, [ tweetDelete, buttonDelete, tweetList]);
+  }, [ tweetDelete, buttonDelete, tweetList, setButtonDelete, setList, setTweetDelete]);
 
   //useEfect para actualizar likes
 
@@ -194,7 +189,7 @@ function App() {
     
 
     
-  }, [tweetUpdate]);
+  }, [tweetUpdate, arrayDelete, setArrayDel,setUpdate, user]);
 
   
  
