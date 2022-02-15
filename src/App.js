@@ -9,6 +9,7 @@ import User from "./Pages/User";
 import LoggedOut from "./Pages/LoggedOut";
 import UserPost from "./Commponents/User/UserPost";
 import UserFavorites from "./Commponents/User/UserFavorites";
+import OtherUser from "./Pages/OtherUser";
 import { AppContext } from './Hooks/AppContext';
 import {onAuthStateChanged } from "firebase/auth";
 import {auth} from "./Services/firebase";
@@ -33,7 +34,8 @@ function App() {
           user,
           setUser, 
           setArrayDel, 
-          arrayDelete
+          arrayDelete, 
+          otherUser
    } = useContext(AppContext);
    const [uidProb, setUid] = useState()
    
@@ -49,7 +51,7 @@ function App() {
             email: user.email,
             photo: user.photoURL,
             uid: user.uid,
-            likes:[]
+            likes: []
           
         })
         } 
@@ -100,12 +102,18 @@ function App() {
   /* useEffect para subir un tweet nuevo a la coleccion de firebase */
   useEffect(() => {
     async function uploadTweet(){
-      
+      console.log(tweetUpload)
       const docRef = await setDocument("Tweets", tweetUpload);
-      setList([...tweetList,
+      const upDate = [...tweetList,
         {...tweetUpload,
           id: docRef.id
-     }])
+     }]
+     /* await tweetList.push({...tweetUpload,
+      id: docRef.id
+      }) */
+      setList(upDate)
+      
+      console.log(tweetList)
      
       return docRef;
     }
@@ -124,6 +132,7 @@ function App() {
     
 
     upload();
+    setList(tweetList)
   }, [buttonUpload, tweetUpload, tweetList]);
 
 
@@ -131,9 +140,9 @@ function App() {
   useEffect(() => {
     async function deleteTweet(){
       const docRef = await deleteDocument("Tweets", tweetDelete);
-      console.log(tweetDelete)
+      
       const newList = tweetList.filter((ID)=>ID.id !== `${tweetDelete}`);
-      console.log(newList)
+      
       setList(newList);
       return docRef;
     }
@@ -214,6 +223,8 @@ function App() {
               ""
             )}
           </Route>
+          <Route path="/otherUser" element={<OtherUser/>} />
+
           
           <Route exact path="/welcome" element={<Welcome />} />
           <Route exact path="/" element={<LoggedOut />} />

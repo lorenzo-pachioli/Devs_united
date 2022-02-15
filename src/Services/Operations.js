@@ -8,13 +8,14 @@ export default async function getColections(coll){
   const tweets = collection(db, coll);
   const tweetsList = await getDocs(tweets);
   const data = tweetsList.docs.map(doc => {return {
-    name:doc.data().Name,
-    tweet:doc.data().Tweet,
+    Name:doc.data().Name,
+    Tweet:doc.data().Tweet,
     likes:doc.data().likes,
     photo:doc.data().photo,
     email:doc.data().email,
     uid:doc.data().uid,
-    id:doc.id
+    id:doc.id, 
+    date:doc.data().date
   }});
   return data;
 }

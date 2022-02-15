@@ -12,6 +12,7 @@ export default function AppProvider({ children }) {
     const [tweetDelete, setTweetDelete] = useState(null);
     const [buttonDelete, setButtonDelete] = useState(false);
     const [user, setUser] = useState({});
+    const [otherUser, setOtherUser] = useState({});
 
     return (
         <AppContext.Provider
@@ -31,7 +32,9 @@ export default function AppProvider({ children }) {
               user,
               setUser, 
               arrayDelete,
-              setArrayDel
+              setArrayDel,
+              otherUser, 
+              setOtherUser
           }}
         >
           {children}

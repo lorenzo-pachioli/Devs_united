@@ -9,29 +9,33 @@ export default function InputTweet(){
   
     const {tweetUpload, setTweet, setButtonUpload, buttonUpload, user, setList, tweetList} = useContext(AppContext);
     const [inputLong, setInputLong] = useState(0)
+    const month = [" January "," February "," March ", " April "," May "," June "," July "," August "," September "," October "," November "," December "];
+
     
     
     const handleInputs= (e) => {
+        const d = new Date();
         if (user) {
             let tweet = {
                 
                 [e.target.name] : e.target.value,
-                Likes: "0",
+                likes: 0,
                 Name: `${user.name}`,
                 photo: `${user.photo}`,
                 uid: `${user.uid}`,
-                email: `${user.email}`
+                email: `${user.email}`,
+                date: `${d.getDate()+ month[d.getMonth()] + d.getFullYear()}`
                 }
+                
                 setTweet(tweet);
+                
                 setInputLong(tweet.Tweet.length);  
             }else{
                 alert("you must be logged in to write tweet");
             }
-        const d = new Date();
-        const date = d.getDate();
-        console.log(date);
+       
         
-        
+           
     }
 
     const handleButton = (e) => {
@@ -92,13 +96,6 @@ export default function InputTweet(){
                 
             </div>
             
-            
-            {/* {post ? (
-                <img src={postOff} alt="img not found" />
-            ):(
-                <img src={postOn} alt="img not found" />
-            )}
-             */}
         </div>
     )
 }

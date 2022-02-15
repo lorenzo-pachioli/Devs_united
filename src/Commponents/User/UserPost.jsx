@@ -27,11 +27,11 @@ export default function UserPost(){
                         <div key={postList.indexOf(tweet)} >
                              <TweetCard 
                                 uid={tweet.uid}
-                                Name={tweet.name}
-                                Tweet={tweet.tweet}
+                                Name={tweet.Name}
+                                Tweet={tweet.Tweet}
                                 Likes={tweet.likes}
                                 photo={tweet.photo}
-                                Date={"5 june"}
+                                Date={tweet.date}
                                 id={tweet.id}
                                 heartOnOff = {heartColor }
                                 />

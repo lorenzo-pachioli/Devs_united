@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import React, {useContext} from "react";
-import "./User.css"
-import orancia from "../Resourses/ornacia.png";
+import "./User.css";
 import UserTopBar from "../Commponents/User/UserTopBar";
 import { AppContext } from '../Hooks/AppContext';
 

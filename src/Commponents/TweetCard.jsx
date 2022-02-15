@@ -4,10 +4,11 @@ import heartOn from "../Resourses/heartOn.svg";
 import heartOff from "../Resourses/heartOff.svg";
 import userImg from "../Resourses/user.png";
 import { AppContext } from '../Hooks/AppContext';
+import { Link } from "react-router-dom";
 
 export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, heartOnOff}){
 
-    const {setTweetDelete, setButtonDelete, buttonDelete, user, tweetList, setUpdate, setList, setArrayDel} = useContext(AppContext);
+    const {setTweetDelete, setButtonDelete, buttonDelete, user, tweetList, setUpdate, setList, setArrayDel,otherUser, setOtherUser} = useContext(AppContext);
 
     const [heartColor, setColor] = useState(heartOnOff)
    
@@ -63,21 +64,21 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
                   setArrayDel(newLike);
                   user.likes.pop(newLike.id);
                   return newLike
-            }
-            
-            
-            
-            
+            } 
           }else{
             return tweet;
           }
         });
         setList(newList);
-        
+      }
 
-         
+      const handleOtherUser = () => {
+        setOtherUser({
+            Name: Name,
+            photo: photo, 
+            uid: uid 
+        })
         
-    
       }
 
       
@@ -102,8 +103,18 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
                 </div>
                 <div className="card-subcontainer">
                     <div className="name-date">
-                        <div className="name" style={namebackground}>{Name}</div> 
-                        <div className="date">- {`${Date}`} </div>
+                        {Object.keys(otherUser).length > 0 ? (<div>
+                            {uid === user.uid ? (
+                                <Link to="/user/post"  className="name" style={namebackground} >{Name}</Link>
+                            ):(
+                                <Link to="/otherUser" className="name" style={namebackground} onClick={handleOtherUser}>{Name}</Link>
+                                
+                            )}</div>
+                            
+                        ) : (
+                            <div className="name" style={namebackground} onMouseMove={handleOtherUser}>{Name}</div>
+                        )} 
+                        <div className="date">- {Date} </div>
                         {user.uid === uid? (
                              <button onClick={handleDelete} value={buttonDelete} className="delete"> X </button>
                         ) : ("")}

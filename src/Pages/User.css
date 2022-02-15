@@ -1,6 +1,7 @@
 .user-title{
     width: 99vw;
-    height: 170px;
+    height: 195px;
+    padding-bottom: 15px;
     background-color: #150714;
     display: flex;
     justify-content: space-around;

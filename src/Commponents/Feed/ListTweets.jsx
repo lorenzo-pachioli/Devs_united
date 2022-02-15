@@ -14,23 +14,23 @@ export default function ListTweets(){
                    user.likes.length > 0 ? (
                     tweetList.map((tweet)=>{
                         const heartColor = user.likes.some((ID)=>{
+                            
                                 if(ID === tweet.id){
                                     return true;
                                 }else{
                                     return false;
                                 }
                             })
-                          
                         
                         return(
                             <div key={tweetList.indexOf(tweet)} >
                                 <TweetCard 
                                 uid={tweet.uid}
-                                Name={tweet.name}
-                                Tweet={tweet.tweet}
+                                Name={tweet.Name}
+                                Tweet={tweet.Tweet}
                                 Likes={tweet.likes}
                                 photo={tweet.photo}
-                                Date={"5 june"}
+                                Date={tweet.date}
                                 id={tweet.id}
                                 heartOnOff = {heartColor }
                                 />
