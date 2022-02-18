@@ -73,11 +73,16 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
       }
 
       const handleOtherUser = () => {
+          
         setOtherUser({
             Name: Name,
             photo: photo, 
             uid: uid 
         })
+        sessionStorage.setItem("uid", uid );
+        sessionStorage.setItem("Name", Name );
+        sessionStorage.setItem("photo", photo );
+        console.log(otherUser)
         
       }
 
@@ -107,7 +112,7 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
                             {uid === user.uid ? (
                                 <Link to="/user/post"  className="name" style={namebackground} >{Name}</Link>
                             ):(
-                                <Link to="/otherUser" className="name" style={namebackground} onClick={handleOtherUser}>{Name}</Link>
+                                <Link to="/otherUser" className="name" style={namebackground} onMouseMove={handleOtherUser}>{Name}</Link>
                                 
                             )}</div>
                             

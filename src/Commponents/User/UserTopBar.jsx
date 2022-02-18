@@ -16,6 +16,7 @@ export default function FeedTopBar(){
 
     const handleOtherUser = ()=> {
         setOtherUser({})
+        sessionStorage.setItem("otherUser", null);
     }
 
     return(
