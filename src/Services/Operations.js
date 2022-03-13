@@ -20,6 +20,19 @@ export default async function getColections(coll){
   return data;
 }
 
+export async function getUserColection(coll){
+  const users = collection(db, coll);
+  const usersList = await getDocs(users);
+  const data = usersList.docs.map(doc => {return {
+    name:doc.data().name,
+    uid:doc.data().uid,
+    username:doc.data().username,
+    color:doc.data().color, 
+    photo:doc.data().photo
+  }});
+  return data;
+}
+
 export async function getDataById(coll, id){
   const docRef = await getDoc(doc(db, coll, id));
   const data = docRef.data();
@@ -33,6 +46,11 @@ export async function setDocument(coll, data){
 
 export async function setData(coll, id, data){
   const docRef = await setDoc(doc(db, coll, id), data);
+  return docRef;
+}
+
+export async function update(coll, id, data){
+  const docRef = await updateDoc(doc(db, coll, id), data);
   return docRef;
 }
 

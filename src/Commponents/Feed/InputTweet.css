@@ -47,6 +47,7 @@
     color: #914D8B;
     resize: none;
     border-style: none;
+    font-family: 'Fira Code', monospace;
 }
 
 .sub-textarea{
@@ -59,6 +60,9 @@
 
 .sub-textarea :last-child{
     color:#F50D5A;
+    font-family: 'Fira Code', monospace;
+    font-style: normal;
+    font-weight: 450;
 }
 
 .container-post-button{

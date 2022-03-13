@@ -28,6 +28,7 @@
     width: 80%;
     height: 80%;
     border-radius: 50%;
+    padding: 5%;
 }
 
 
@@ -36,7 +37,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 33vw;  
+    width: 36vw;  
     
 }
 
@@ -46,26 +47,28 @@
     justify-content: center;
     align-items: flex-start;
     margin-left: 3%;
-    
 }
 
 .name{
     color:#2E132C;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     display: flex;
     align-items: center;
     letter-spacing: -0.333333px;
     vertical-align: text-top;
-   
+    font-family: 'Silkscreen', sans-serif;
+    padding: 4px;
+    text-decoration: none;
 }
 
 .date{
     color: white;
     text-align: left;
-    width: 10vw;
+    width: 11rem;
     text-indent: 10px;
+    font-family: 'Fira Code', monospace;
 }
 
 .tweet{
@@ -74,6 +77,7 @@
     margin-left: 3%;
     padding-top: 10px;
     color:white;
+    font-family: 'Fira Code', monospace;
     
 }
 
@@ -87,9 +91,11 @@
     color: #F50D5A;
     font-weight: 450;
     font-size: 16px;
+    font-family: 'Fira Code', monospace;
     line-height: 21px;
     padding-top: 10px;
 }
+
 
 .likes button{
     width: 30%;
@@ -102,17 +108,29 @@
 .likes img{
     width: 100%;
 }
+.likes img:hover{
+    width: 115%;
+}
 
 .card hr{
     background-color:#60265B;
     height:2px;
     border-style: none;
+    width: 37vw;
+    align-self: flex-start;
 }
 
 .delete{
     color:#F50D5A;
     border-style: none;
     background-color: inherit;
-    font-size: 18px;
-    font-weight: 800;
+    margin-left: 8px;
+}
+.trashCan{
+    width: 3vh;
+    
+    
+}
+.trashCan:hover{
+    width: 3.5vh;
 }

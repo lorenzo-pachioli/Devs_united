@@ -3,27 +3,38 @@
     flex-direction: column;
     align-items: flex-start;
     color:white;
+    width: 55vh;
+    font-size: 3vh;
+    font-family: 'Silkscreen', sans-serif;
 }
 
 .text{
-    width: 35vh;
+    width: 50vh;
     height: 7vh;
     margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
-h3{
+.text h3{
     width: 100%;
     height: 100%;
     color:white;
-    text-align: justify;
-    text-justify:distribute-all-lines;
-    text-align-last: justify;
+    text-align: left;
     letter-spacing: 0.8px;
+    font-family: 'Silkscreen', sans-serif;
+}
+.loggedOut-container{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 60%;
+    min-height: 70%; 
 }
 
 .loggedOut-container .link{
-    height: 5vh;
-    width: 100%;
+    height: 6vh;
+    width: 55vh;
     margin-top: 5vh;
     border-style: none;
     text-decoration: none;
@@ -33,8 +44,8 @@ h3{
 }
 
 .loggedOut-container  .link:hover{
-    height: 5.5vh;
-    width: 105%;
+    height: 6.5vh;
+    width: 56vh;
 }
 .blue{
     background-color: #4285F4;

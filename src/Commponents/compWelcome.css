@@ -9,14 +9,12 @@
     justify-content: space-around;
     align-items: flex-start;
     width: 50%;
-    min-height: 90%; 
+    min-height: 80%; 
     color:white;
-    margin-bottom: 10%;
-    border: 1px solid white;
 }
 
 .container-welcome h1{
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     font-family: Silkscreen;
 }
 
@@ -26,7 +24,7 @@
 }
 
 .input{
-    width: 25vw;
+    width: 22.5vw;
     height: 3vw;
     display:flex; 
     justify-content: center;
@@ -36,6 +34,7 @@
     background-color: #150714;
     color:#914D8B;
     border-style: none;
+    font-family: 'Fira Code', monospace;
 }
 
 .colours{
@@ -51,7 +50,13 @@
     width: 13%;
     height: 100%;
 }
+.square:hover{
+    border:1px solid white;
+}
 
+.square:active{
+    border:1px solid white;
+}
 
 .red{
     background-color:#F50D5A;
@@ -83,9 +88,9 @@
     text-decoration: none;
     color: white;
     font-size: 150%;
+    
 }
 
 .red-text{
     color:#F50D5A;
-    
 }

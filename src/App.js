@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect, useContext, useState } from 'react';
 import { Route, Routes, } from "react-router-dom";
-import getColections, {setDocument, deleteDocument, updateLikes, updateUser, getDataById, deleteUser } from "./Services/Operations";
+import getColections, {setDocument, deleteDocument, updateLikes, updateUser, getDataById, deleteUser,  getUserColection } from "./Services/Operations";
 import Welcome from "./Pages/Welcome";
 import Feed from "./Pages/Feed";
 import User from "./Pages/User";
@@ -12,6 +12,7 @@ import OtherUser from "./Pages/OtherUser";
 import { AppContext } from './Hooks/AppContext';
 import {onAuthStateChanged } from "firebase/auth";
 import {auth} from "./Services/firebase";
+import { update } from "./Services/Operations";
 
 
 
@@ -20,6 +21,7 @@ function App() {
   const {
           tweetList,
           setList,
+          setUsersList,
           tweetUpload,
           setTweet,
           tweetUpdate,
@@ -44,19 +46,22 @@ function App() {
       onAuthStateChanged(auth,  (user) => {
         if (user) {
           setUid(user)
+          console.log(user)
           setUser({
             name: user.displayName,
             email: user.email,
             photo: user.photoURL,
             uid: user.uid,
-            likes: []
+            likes: [],
+            color: null, 
+            username: ""
           
         })
         } 
       })
       
     }
-
+  
     currentUser();
 
     
@@ -72,7 +77,9 @@ function App() {
             email: uidProb.email,
             photo: uidProb.photoURL,
             uid: uidProb.uid,
-            likes: oldUser.likes
+            likes: oldUser.likes, 
+            color: oldUser.color, 
+            username: oldUser.username
           
         })
       }
@@ -94,6 +101,17 @@ function App() {
     getData();
 
   },[setList]);
+
+  /* useEffect para traer la lista de ususarios */
+  useEffect( () => {
+    async function getData(){
+      const users = await  getUserColection("Users");
+      setUsersList(users);
+    }
+    
+    getData();
+
+  },[setUsersList]);
 
   
 
@@ -191,7 +209,30 @@ function App() {
     
   }, [tweetUpdate, arrayDelete, setArrayDel,setUpdate, user]);
 
+
+  useEffect(()=>{
+    const upDateColor = async () => {
+       const docRef = await update("Users", user.uid, {color: user.color});
+       return docRef;
+    }
+
+    if(user.color){
+      upDateColor();
+    }
+    
+},[user]);
+
+useEffect(()=>{
+  const upDateUsername = async () => {
+     const docRef = await update("Users", user.uid, {username: user.username});
+     return docRef;
+  }
+
+  if(user.username){
+    upDateUsername();
+  }
   
+},[user]);
  
  
 

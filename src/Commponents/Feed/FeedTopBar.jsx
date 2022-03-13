@@ -9,12 +9,16 @@ export default function FeedTopBar(){
 
     const {user} = useContext(AppContext);
 
+    let borderUser = {
+        border: `2px solid ${user.color}`
+    }
+
     return(
         <div className="topBar-container" >
             <div className="user-img">
                 {user ? (
                     <Link to="/user/post" className="user-img" >
-                        <img src={`${user.photo}`} alt="img not found" />
+                        <img src={`${user.photo}`} alt="img not found" style={borderUser}/>
                     </Link>
 
                 ) : (

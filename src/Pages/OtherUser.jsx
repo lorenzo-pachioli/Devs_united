@@ -7,7 +7,7 @@ import TweetCard from "../Commponents/TweetCard";
 
 export default function OtherUser(){
 
-    const {user, otherUser, setOtherUser, tweetList} = useContext(AppContext);
+    const {user, otherUser, setOtherUser, tweetList, usersList} = useContext(AppContext);
     
     
 
@@ -16,12 +16,14 @@ export default function OtherUser(){
         const uid = sessionStorage.getItem("uid" );
         const Name = sessionStorage.getItem("Name" );
         const photo = sessionStorage.getItem("photo");
+        const color = sessionStorage.getItem("color");
         console.log(photo)
         if(Name !== null){
             setOtherUser({
                 Name: Name,
                 photo: photo, 
-                uid: uid 
+                uid: uid, 
+                color: color 
             });
         }
         
@@ -31,12 +33,14 @@ export default function OtherUser(){
     const postList = tweetList.filter((tweet)=> {
         return tweet.uid === otherUser.uid;
     })
-    console.log(postList);
 
     
 
     const backColor= {
-        backgroundColor:"#FFEA5C"
+        backgroundColor:`${otherUser.color ? (otherUser.color) : ("#800FFF")}`
+    }
+    let borderUser = {
+        border: `2px solid ${otherUser.color ? (otherUser.color) : ("#800FFF")}`
     }
 
 
@@ -45,7 +49,7 @@ export default function OtherUser(){
             <div>
                 {Object.keys(user).length > 0 ? (
                 <div>
-                    { user.likes.length > 0 ? (
+                    { user.likes.length >= 0 ? (
                         postList.map((tweet)=>{
                             const heartColor = user.likes.some((ID)=>{
                                 if(ID === tweet.id){
@@ -54,11 +58,15 @@ export default function OtherUser(){
                                     return false;
                                 }
                             })
+                            const thisUser = usersList.find((u)=>{
+                                return tweet.uid === u.uid
+                            })
                             return(
                                 <div key={postList.indexOf(tweet)} >
                                     <TweetCard 
                                         uid={tweet.uid}
-                                        Name={tweet.Name}
+                                        Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                        color={thisUser.color}
                                         Tweet={tweet.Tweet}
                                         Likes={tweet.likes}
                                         photo={tweet.photo}
@@ -88,7 +96,7 @@ export default function OtherUser(){
         <div>
             <UserTopBar />
             <div className="user-title">
-                <img src={`${otherUser.photo}`} alt="img not found" />
+                <img src={`${otherUser.photo}`} style={borderUser} alt="img not found" />
                 <h1 style={backColor}>{`${otherUser.Name}`}</h1>
             </div>
             

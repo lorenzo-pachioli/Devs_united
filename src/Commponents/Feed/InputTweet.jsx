@@ -44,12 +44,13 @@ export default function InputTweet(){
         setInputLong(0);
         
     }
+   
     
     return (
         <div className='input-container' >
             <div className='inputuser-img'>
                 {user ? (
-                    <img src={`${user.photo}`}   alt="img not found" />
+                    <img src={`${user.photo}`}  alt="img not found" />
 
                 ) : (
                     <img src={ornacia}   alt="img not found" />

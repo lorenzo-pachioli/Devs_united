@@ -3,22 +3,27 @@ import "./TweetCard.css";
 import heartOn from "../Resourses/heartOn.svg";
 import heartOff from "../Resourses/heartOff.svg";
 import userImg from "../Resourses/user.png";
+import trashCan from "../Resourses/trash-can-solid.svg";
+import loading from "../Resourses/loading.gif";
 import { AppContext } from '../Hooks/AppContext';
 import { Link } from "react-router-dom";
 
-export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, heartOnOff}){
+export default function TweetCard({id, uid, Likes, Tweet, Name, color, Date, photo, heartOnOff}){
 
-    const {setTweetDelete, setButtonDelete, buttonDelete, user, tweetList, setUpdate, setList, setArrayDel,otherUser, setOtherUser} = useContext(AppContext);
+    const {setTweetDelete, setButtonDelete, buttonDelete, user,  tweetList, setUpdate, setList, setArrayDel,otherUser, setOtherUser} = useContext(AppContext);
 
     const [heartColor, setColor] = useState(heartOnOff)
    
+  
+  
+   
 
     const handleDelete =()=>{
-        setTweetDelete(`${id}`)
-        setButtonDelete(true)
-        
-        console.log(buttonDelete);
-
+        let deleteConfirmation  = window.confirm('Quieres eliminar el tweet?');
+        if(deleteConfirmation ){
+            setTweetDelete(`${id}`)
+            setButtonDelete(true)
+        }
     }
 
    
@@ -36,9 +41,6 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
             }
         }
         changeLike();
-
-        
-
         const ID = String(id);
 
         const newList = tweetList.map((tweet)=>{
@@ -76,13 +78,15 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
           
         setOtherUser({
             Name: Name,
-            photo: photo, 
-            uid: uid 
+            uid: uid, 
+            photo:photo, 
+            color:color
         })
         sessionStorage.setItem("uid", uid );
         sessionStorage.setItem("Name", Name );
         sessionStorage.setItem("photo", photo );
-        console.log(otherUser)
+        sessionStorage.setItem("color", color );
+        
         
       }
 
@@ -92,17 +96,17 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
     
 
     const namebackground = {
-        backgroundColor: "#800FFF"
+        backgroundColor: `${color ? (color) : (uid === user.uid ? (user.color):("#800FFF"))}`
     }
 
-    return (
-        <div className="card" >
-             <div className="card-container" >
+    const ShowResult = ()=> {
+        return (
+            <div className="card-container" >
                 <div className="card-img">
                     {photo  != null ? (
                         <img src={photo} alt="" />
                     ) : (
-                        <img src={userImg} alt="" />
+                        <img src={userImg}  alt="" />
                     )}
                     
                 </div>
@@ -112,16 +116,18 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
                             {uid === user.uid ? (
                                 <Link to="/user/post"  className="name" style={namebackground} >{Name}</Link>
                             ):(
-                                <Link to="/otherUser" className="name" style={namebackground} onMouseMove={handleOtherUser}>{Name}</Link>
+                                <Link to="/otherUser" className="name" style={namebackground} onClick={handleOtherUser}>{Name}</Link>
                                 
                             )}</div>
                             
                         ) : (
-                            <div className="name" style={namebackground} onMouseMove={handleOtherUser}>{Name}</div>
+                            <div className="name" style={namebackground} onClick={handleOtherUser}>{Name}</div>
                         )} 
                         <div className="date">- {Date} </div>
                         {user.uid === uid? (
-                             <button onClick={handleDelete} value={buttonDelete} className="delete"> X </button>
+                             <button onClick={handleDelete} value={buttonDelete} className="delete"> 
+                                <img src={trashCan} className="trashCan" fill="white" alt="img not found" /> 
+                             </button>
                         ) : ("")}
                         
                         
@@ -143,6 +149,24 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, Date, photo, hea
                     </div>
                 </div>
             </div>
+        )
+    }
+   
+
+    return (
+        <div className="card" >
+            {Name ? ( 
+                <ShowResult />
+            ):(
+                <div className="card-container">
+                    <div className="card-img">
+                        <img src={loading} className="" alt="not img found" />
+                    </div> 
+                    
+                </div>
+                
+            )}
+             
              <hr width="100%" />               
         </div>
        

@@ -14,7 +14,7 @@ export default function Welcome(){
                 
                 <CompWelcome />
                 
-                <h5>© 2020 Devs_United - <span className='beta'>BETA</span> </h5>
+                <h5 className='copyrigth'>© 2020 Devs_United - <span className='beta'>BETA</span> </h5>
             </div>
             
             

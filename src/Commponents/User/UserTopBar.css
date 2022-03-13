@@ -19,9 +19,25 @@
     background-color: #F50D5A;
     text-decoration: none;
     color:#250C23;
+    padding: 2px;
+}
+.logout h4{
+    margin-right: 10px;
+}
+.logout img{
+    height: 2vh;
 }
 
 .username{
     color: white;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10%;
+    font-family: 'Silkscreen', sans-serif;
+}
+.username img{
+    width: 2vh;
+    fill: white;
 }

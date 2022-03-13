@@ -5,7 +5,7 @@ import "./UserFavorites.css";
 import { AppContext } from '../../Hooks/AppContext';
 
 export default function UserFavorites(){
-    const {tweetList, user} = useContext(AppContext);
+    const {tweetList, user, usersList} = useContext(AppContext);
     /* const [heartColor, setColor] = useState(false) */
     const favList = tweetList.filter((tweet)=> {
 
@@ -22,7 +22,7 @@ export default function UserFavorites(){
     const ShowResult = ()=> {
         return(
             <div>
-                { user.likes.length > 0 ? (
+                { user.likes.length >= 0 ? (
                 favList.map((tweet)=>{
                     const heartColor = user.likes.some((ID)=>{
                         if(ID === tweet.id){
@@ -31,11 +31,15 @@ export default function UserFavorites(){
                             return false;
                         }
                     })
+                    const thisUser = usersList.find((u)=>{
+                        return tweet.uid === u.uid
+                    })
                     return(
                         <div key={favList.indexOf(tweet)} >
                              <TweetCard 
                                 uid={tweet.uid}
-                                Name={tweet.Name}
+                                Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                color={thisUser.color}
                                 Tweet={tweet.Tweet}
                                 Likes={tweet.likes}
                                 photo={tweet.photo}

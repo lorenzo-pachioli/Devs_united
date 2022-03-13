@@ -5,6 +5,7 @@ export const AppContext = React.createContext();
 export default function AppProvider({ children }) {
 
     const [tweetList, setList] = useState([]);
+    const [usersList, setUsersList] = useState([])
     const [tweetUpload, setTweet] = useState({});
     const [tweetUpdate, setUpdate] = useState({});
     const [arrayDelete, setArrayDel] = useState({});
@@ -19,6 +20,8 @@ export default function AppProvider({ children }) {
           value={{
               tweetList,
               setList,
+              usersList, 
+              setUsersList,
               tweetUpload,
               setTweet,
               tweetUpdate,

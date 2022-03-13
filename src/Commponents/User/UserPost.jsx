@@ -6,7 +6,7 @@ import { AppContext } from '../../Hooks/AppContext';
 
 export default function UserPost(){
 
-    const {tweetList, user} = useContext(AppContext);
+    const {tweetList, user, usersList} = useContext(AppContext);
     const postList = tweetList.filter((tweet)=> {
         return tweet.uid === user.uid;
     })
@@ -14,7 +14,7 @@ export default function UserPost(){
     const ShowResult = ()=> {
         return(
             <div>
-                { user.likes.length > 0 ? (
+                { user.likes.length >= 0 ? (
                 postList.map((tweet)=>{
                     const heartColor = user.likes.some((ID)=>{
                         if(ID === tweet.id){
@@ -23,11 +23,15 @@ export default function UserPost(){
                             return false;
                         }
                     })
+                    const thisUser = usersList.find((u)=>{
+                        return tweet.uid === u.uid
+                    })
                     return(
                         <div key={postList.indexOf(tweet)} >
                              <TweetCard 
                                 uid={tweet.uid}
-                                Name={tweet.Name}
+                                Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                color={thisUser.color}
                                 Tweet={tweet.Tweet}
                                 Likes={tweet.likes}
                                 photo={tweet.photo}

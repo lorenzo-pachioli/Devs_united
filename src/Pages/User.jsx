@@ -10,14 +10,17 @@ export default function User(){
     const {user} = useContext(AppContext);
 
     const backColor= {
-        backgroundColor:"#FFEA5C"
+        backgroundColor:`${user.color}`
+    }
+    let borderUser = {
+        border: `2px solid ${user.color}`
     }
 
     return(
         <div>
             <UserTopBar />
             <div className="user-title">
-                <img src={`${user.photo}`} alt="img not found" />
+                <img src={`${user.photo}`} style={borderUser} alt="img not found" />
                 <h1 style={backColor}>{`${user.name}`}</h1>
             </div>
             

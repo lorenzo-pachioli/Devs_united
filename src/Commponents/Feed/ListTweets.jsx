@@ -5,13 +5,14 @@ import { AppContext } from '../../Hooks/AppContext';
 
 export default function ListTweets(){
 
-    const {tweetList, user} = useContext(AppContext);
-
+    const {tweetList, user, usersList} = useContext(AppContext);
+    
     const ShowResult = () => {
+        
         return (
             <div>
                 {
-                   user.likes.length > 0 ? (
+                   user.likes.length >= 0 ? (
                     tweetList.map((tweet)=>{
                         const heartColor = user.likes.some((ID)=>{
                             
@@ -21,12 +22,17 @@ export default function ListTweets(){
                                     return false;
                                 }
                             })
+                        const thisUser = usersList.find((u)=>{
+                            return tweet.uid === u.uid
+                        })
+                        console.log(usersList)
                         
                         return(
                             <div key={tweetList.indexOf(tweet)} >
                                 <TweetCard 
                                 uid={tweet.uid}
-                                Name={tweet.Name}
+                                Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                color={thisUser.color}
                                 Tweet={tweet.Tweet}
                                 Likes={tweet.likes}
                                 photo={tweet.photo}
@@ -50,7 +56,6 @@ export default function ListTweets(){
                 
                 {Object.keys(user).length > 0 ? (
                     <ShowResult />
-
                 ):(
                     <div>Loading...</div>
                     

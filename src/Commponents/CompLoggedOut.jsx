@@ -19,13 +19,13 @@ export default function CompLoggedOut(){
             email: newUser.email,
             photo: newUser.photoURL,
             uid: newUser.uid,
-            likes: oldUser.likes
+            likes: oldUser.likes,
+            color:oldUser.color
         }) 
         console.log(user)
     }
 
   
-    
    
     return (
         <div className="loggedOut-container">
@@ -38,7 +38,7 @@ export default function CompLoggedOut(){
                 
             </div>
             <div>
-            {user ? (
+            {user.uid ? (
                 <Link to="welcome" className="link green" > Continue </Link>
             ) : (
                 <button  onClick={singIn}  className="link blue">
