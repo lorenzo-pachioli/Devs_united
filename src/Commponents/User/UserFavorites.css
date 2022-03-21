@@ -29,6 +29,7 @@
     align-items: center;
     justify-content: center;
     background-color: #60265B;
+    border-bottom: 2px solid #60265B;
 }
 
 
@@ -50,4 +51,12 @@
 
 .favorite-top .link:hover{
     border: 1px solid #60265B;
+}
+
+@media screen and (max-width: 990px) {
+    .favorite-top{
+        height: 4vh;
+        width: 99%;
+        border-bottom: 2px solid #60265B;
+    }
 }

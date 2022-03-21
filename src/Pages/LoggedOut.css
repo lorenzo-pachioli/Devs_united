@@ -4,7 +4,7 @@
     box-sizing: content-box;
 }
 
-main{
+.main-loggedOut{
     display:flex; 
     flex-direction: row;
     justify-content: center;
@@ -29,7 +29,7 @@ main{
 }
 
 
-.menu{
+.main-loggedOut .menu{
     display:flex; 
     flex-direction: column;
     justify-content: flex-end;
@@ -46,4 +46,24 @@ main{
 
 .beta{
     color:#F50D5A;
+}
+
+@media screen and (max-width: 990px) {
+    .main-loggedOut{
+        flex-direction: column;
+    }
+    .img-out{
+        height: 50vh;
+        width: 100vw;
+        
+    }
+    .img-out img{
+        width: 80%;
+        height: 80%;
+    }
+    .main-loggedOut .menu{
+        width: 100vw;
+        min-height: 50vh;   
+        margin: 0;
+    }
 }

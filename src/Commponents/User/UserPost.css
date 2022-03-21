@@ -1,5 +1,5 @@
 .post-container{
-    width: 99vw;
+    width: 100%;
     min-height: 67.5vh ;
     background-color: #2E132C;
     display: flex;
@@ -30,6 +30,7 @@
     align-items: center;
     justify-content: center;
     background-color: #60265B;
+    border-bottom: 2px solid #60265B;
 }
 
 .post-top .link{
@@ -48,4 +49,12 @@
 
 .post-top .link:hover{
     border: 1px solid #60265B;
+}
+
+@media screen and (max-width: 990px) {
+    .post-top{
+        height: 4vh;
+        width: 100%;
+        border-bottom: 2px solid #60265B;
+    }
 }

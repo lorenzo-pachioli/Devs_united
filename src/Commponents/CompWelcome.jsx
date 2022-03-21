@@ -40,14 +40,14 @@ export default function CompWelcome(){
                 <h1 className="red-text">{user ? (user.name) : ("to Devs-united")}</h1>
             </div>
             <input type="text" className="input" onChange={handleUsername} value={user.username} placeholder="Type your username" />
-            <h4>Select your color:</h4>
+            <h4>Select your favorite color:</h4>
             <ul className="colours">
-                <li className="square red" onClick={handleColor} style={user.color==="red" ? (selected):({})} id="#F50D5A"/>
-                <li className="square orange" onClick={handleColor} style={user.color==="orange" ? (selected):({})} id="#FF865C"/>
-                <li className="square yellow" onClick={handleColor} style={user.color==="yellow" ? (selected):({})} id="#FFEA5C"/>
-                <li className="square green"onClick={handleColor} style={user.color==="green" ? (selected):({})} id="#00DA76"/>
-                <li className="square blue" onClick={handleColor} style={user.color==="blue" ? (selected):({})} id="#0096CE"/>
-                <li className="square purple" onClick={handleColor} style={user.color==="purple" ? (selected):({})} id="#800FFF"/>
+                <li className="square red" onClick={handleColor} style={user.color==="#F50D5A" ? (selected):({})} id="#F50D5A"/>
+                <li className="square orange" onClick={handleColor} style={user.color==="#FF865C" ? (selected):({})} id="#FF865C"/>
+                <li className="square yellow" onClick={handleColor} style={user.color==="#FFEA5C" ? (selected):({})} id="#FFEA5C"/>
+                <li className="square green"onClick={handleColor} style={user.color==="#00DA76" ? (selected):({})} id="#00DA76"/>
+                <li className="square blue" onClick={handleColor} style={user.color==="#0096CE" ? (selected):({})} id="#0096CE"/>
+                <li className="square purple" onClick={handleColor} style={user.color==="#800FFF" ? (selected):({})} id="#800FFF"/>
             </ul>
             <Link to="/feed" className="continue" style={user.color ? (enable) : (disable)} >Continue</Link>
         </div>

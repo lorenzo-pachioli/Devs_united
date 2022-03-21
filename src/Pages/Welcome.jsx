@@ -5,12 +5,12 @@ import "./welcome.css";
 
 export default function Welcome(){
     return (
-        <div className='main' >
+        <div className='main-welcome' >
             <div className='img-welcome'>
                 <img src={logoBig} className='logo' alt="img not found" />
             </div>
             
-            <div className='menu'>
+            <div className='menu-welcome'>
                 
                 <CompWelcome />
                 

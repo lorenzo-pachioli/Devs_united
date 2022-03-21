@@ -84,3 +84,21 @@
 .post-button:active{
     height: 67%;
 }
+
+@media screen and (max-width: 990px) {
+    .inputuser-img{
+        height: 10vw;
+        width: 10vw;
+        margin-left: 5%;
+    }
+    .input-tweet{
+        width: 83%;
+        height: 90%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        color:white;
+        
+    }
+}

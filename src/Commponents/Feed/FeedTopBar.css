@@ -31,3 +31,20 @@
     height: 30%;
     width: 30%;
 }
+
+@media screen and (max-width: 990px) {
+    .user-img{
+        height: 80%;
+        width: 30%;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 5%;
+    }
+    .user-img img{
+        height: 80%;
+        border-radius: 50%;
+
+    }
+    
+}

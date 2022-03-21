@@ -17,7 +17,7 @@ export default function User(){
     }
 
     return(
-        <div>
+        <div className="user-container">
             <UserTopBar />
             <div className="user-title">
                 <img src={`${user.photo}`} style={borderUser} alt="img not found" />

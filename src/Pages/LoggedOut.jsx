@@ -5,7 +5,7 @@ import "./LoggedOut.css";
 
 export default function LoggedOut(){
     return (
-        <main>
+        <div className='main-loggedOut'>
             <div className='img-out'>
                 <img src={logoBig} alt="img not found" />
             </div>
@@ -14,6 +14,6 @@ export default function LoggedOut(){
                 <CompLoggedOut />
                 <h5>© 2020 Devs_United - <span className='beta'>BETA</span> </h5>
             </div>
-        </main>
+        </div>
     )
 }

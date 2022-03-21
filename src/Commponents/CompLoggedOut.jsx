@@ -22,7 +22,6 @@ export default function CompLoggedOut(){
             likes: oldUser.likes,
             color:oldUser.color
         }) 
-        console.log(user)
     }
 
   

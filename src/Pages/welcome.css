@@ -4,7 +4,7 @@
     box-sizing: content-box;
 }
 
-.main{
+.main-welcome{
     display:flex; 
     flex-direction: row;
     justify-content: center;
@@ -30,15 +30,15 @@
     width: 50%;
 }
 
-
-
-
-.menu{
+.menu-welcome{
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 49%;
-    min-height: 80vh;   
+    min-height: 100vh;   
     margin: 0;
+    
 }
 
 .copyrigth{
@@ -49,4 +49,25 @@
 
 .beta{
     color:#F50D5A;
+}
+
+@media screen and (max-width: 990px) {
+    .main-welcome{
+        flex-direction: column;
+    }
+    .img-welcome{
+        height: 50vh;
+        width: 100vw;
+    }
+    .img-welcome img{
+        width: 80%;
+        height: 80%;
+    }
+    .menu-welcome{
+        width: 100%;
+        min-height: 50vh;   
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+    }
 }
