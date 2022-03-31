@@ -35,9 +35,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 49%;
+    min-width: 49%;
     min-height: 100vh;   
     margin: 0;
+    border:1px solid yellow;
     
 }
 

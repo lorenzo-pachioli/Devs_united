@@ -8,9 +8,10 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    width: 70%;
+    max-width: 70%;
     min-height: 50vh; 
     color:white;
+    border: 1px solid wheat;
 }
 
 .container-welcome h1{
