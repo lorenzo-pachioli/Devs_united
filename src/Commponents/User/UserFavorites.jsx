@@ -36,17 +36,19 @@ export default function UserFavorites(){
                     })
                     return(
                         <div key={favList.indexOf(tweet)} >
-                             <TweetCard 
-                                uid={tweet.uid}
-                                Name={thisUser.username ? (thisUser.username):(tweet.Name)}
-                                color={thisUser.color}
-                                Tweet={tweet.Tweet}
-                                Likes={tweet.likes}
-                                photo={tweet.photo}
-                                Date={tweet.date}
-                                id={tweet.id}
-                                heartOnOff = {heartColor }
-                                />
+                             {thisUser ? (
+                                    <TweetCard 
+                                    uid={tweet.uid}
+                                    Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                    color={thisUser.color}
+                                    Tweet={tweet.Tweet}
+                                    Likes={tweet.likes}
+                                    photo={tweet.photo}
+                                    Date={tweet.date}
+                                    id={tweet.id}
+                                    heartOnOff = {heartColor }
+                                    />
+                                ): (<div></div>)}
                         </div>
                     )
                     }

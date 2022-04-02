@@ -63,17 +63,19 @@ export default function OtherUser(){
                             })
                             return(
                                 <div key={postList.indexOf(tweet)} >
+                                    {thisUser ? (
                                     <TweetCard 
-                                        uid={tweet.uid}
-                                        Name={thisUser.username ? (thisUser.username):(tweet.Name)}
-                                        color={thisUser.color}
-                                        Tweet={tweet.Tweet}
-                                        Likes={tweet.likes}
-                                        photo={tweet.photo}
-                                        Date={tweet.date}
-                                        id={tweet.id}
-                                        heartOnOff = {heartColor }
-                                        />
+                                    uid={tweet.uid}
+                                    Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                    color={thisUser.color}
+                                    Tweet={tweet.Tweet}
+                                    Likes={tweet.likes}
+                                    photo={tweet.photo}
+                                    Date={tweet.date}
+                                    id={tweet.id}
+                                    heartOnOff = {heartColor }
+                                    />
+                                ): (<div></div>)}
                                 </div>
                             )
                         }
