@@ -13,7 +13,7 @@ export default function ListTweets(){
             <div>
                 {
                    user.likes.length >= 0 ? (
-                    tweetList.map((tweet)=>{
+                    tweetList.map((tweet)=> {
                         const heartColor = user.likes.some((ID)=>{
                             
                                 if(ID === tweet.id){
@@ -25,21 +25,22 @@ export default function ListTweets(){
                         const thisUser = usersList.find((u)=>{
                             return tweet.uid === u.uid
                         })
-                        console.log(usersList)
                         
                         return(
                             <div key={tweetList.indexOf(tweet)} >
-                                <TweetCard 
-                                uid={tweet.uid}
-                                Name={thisUser.username ? (thisUser.username):(tweet.Name)}
-                                color={thisUser.color}
-                                Tweet={tweet.Tweet}
-                                Likes={tweet.likes}
-                                photo={tweet.photo}
-                                Date={tweet.date}
-                                id={tweet.id}
-                                heartOnOff = {heartColor }
-                                />
+                                {thisUser ? (
+                                    <TweetCard 
+                                    uid={tweet.uid}
+                                    Name={thisUser.username ? (thisUser.username):(tweet.Name)}
+                                    color={thisUser.color}
+                                    Tweet={tweet.Tweet}
+                                    Likes={tweet.likes}
+                                    photo={tweet.photo}
+                                    Date={tweet.date}
+                                    id={tweet.id}
+                                    heartOnOff = {heartColor }
+                                    />
+                                ): (<div></div>)}
                             </div>
                         )
                         }

@@ -7,10 +7,14 @@ import { AppContext } from '../../Hooks/AppContext';
 
 export default function FeedTopBar(){
 
-    const {user} = useContext(AppContext);
+    const {user, loading} = useContext(AppContext);
 
     let borderUser = {
         border: `2px solid ${user.color}`
+    }
+    let loadingLogo = {
+        transform: `${loading ? (`rotate(360deg)`):(``)}` 
+        
     }
 
     return(
@@ -26,7 +30,7 @@ export default function FeedTopBar(){
                 )}
             </div>
             
-            <img src={logoSmall} className="logo" alt="img not found" />
+            <img src={logoSmall} className="feedLogo" style={loadingLogo} alt="img not found" />
             <img src={titleSmall} className="devs" alt="img not found" />
         </div>
     )

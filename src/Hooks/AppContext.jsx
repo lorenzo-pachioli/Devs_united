@@ -14,6 +14,7 @@ export default function AppProvider({ children }) {
     const [buttonDelete, setButtonDelete] = useState(false);
     const [user, setUser] = useState({});
     const [otherUser, setOtherUser] = useState({});
+    const [loading, setLoading] = useState(false);
 
     return (
         <AppContext.Provider
@@ -37,7 +38,9 @@ export default function AppProvider({ children }) {
               arrayDelete,
               setArrayDel,
               otherUser, 
-              setOtherUser
+              setOtherUser, 
+              loading, 
+              setLoading
           }}
         >
           {children}

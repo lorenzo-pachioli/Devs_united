@@ -22,10 +22,13 @@
 }
 
 
-.logo{
+.feedLogo{
     height: 50%;
     width: 30%;
+    transition: all 0.3s ease-in-out;
+    transition: 2s;
 }
+
 
 .devs{
     height: 30%;

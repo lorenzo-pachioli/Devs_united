@@ -35,7 +35,8 @@ function App() {
           user,
           setUser, 
           setArrayDel, 
-          arrayDelete
+          arrayDelete,
+          setLoading
    } = useContext(AppContext);
    const [uidProb, setUid] = useState()
    
@@ -43,6 +44,7 @@ function App() {
   useEffect(() => {
 
     async function currentUser(){
+      setLoading(true);
       onAuthStateChanged(auth,  (user) => {
         if (user) {
           setUid(user)
@@ -59,6 +61,7 @@ function App() {
         })
         } 
       })
+      setLoading(false)
       
     }
   
@@ -66,11 +69,12 @@ function App() {
 
     
     
-  },[setUid, setUser ]);
+  },[setUid, setUser, setLoading ]);
 
   useEffect(() => {
     async function userLikes(){
       if(uidProb){
+        setLoading(true);
         const oldUser = await getDataById("Users", uidProb.uid);
         setUser({
             name: uidProb.displayName,
@@ -82,43 +86,48 @@ function App() {
             username: oldUser.username
           
         })
+        setLoading(false);
       }
       
     }
 
     userLikes();
-  }, [uidProb, setUser]);
+  }, [uidProb, setUser, setLoading]);
 
   
 
   /* useEffect para traer la coleccion de firebase */
   useEffect( () => {
     async function getData(){
+      setLoading(true);
       const tweets = await getColections("Tweets");
       setList(tweets);
+      setLoading(false);
     }
     
     getData();
 
-  },[setList]);
+  },[setList, setLoading]);
 
   /* useEffect para traer la lista de ususarios */
   useEffect( () => {
     async function getData(){
+      setLoading(true);
       const users = await  getUserColection("Users");
       setUsersList(users);
+      setLoading(true);
     }
     
     getData();
 
-  },[setUsersList]);
+  },[setUsersList, setLoading]);
 
   
 
   /* useEffect para subir un tweet nuevo a la coleccion de firebase */
   useEffect(() => {
     async function uploadTweet(){
-      console.log(tweetUpload)
+      setLoading(true);
       const docRef = await setDocument("Tweets", tweetUpload);
       const upDate = [...tweetList,
         {...tweetUpload,
@@ -126,8 +135,7 @@ function App() {
      }]
       setList(upDate)
       
-      console.log(tweetList)
-     
+      setLoading(false);
       return docRef;
     }
     const upload = ()=> {
@@ -146,17 +154,19 @@ function App() {
 
     upload();
     setList(tweetList)
-  }, [buttonUpload, tweetUpload, tweetList, setButtonUpload, setList, setTweet]);
+  }, [buttonUpload, tweetUpload, tweetList, setButtonUpload, setList, setTweet, setLoading]);
 
 
   /* useEffect para eliminar un tweet de la coleccion de firebase */
   useEffect(() => {
     async function deleteTweet(){
+      setLoading(true);
       const docRef = await deleteDocument("Tweets", tweetDelete);
       
       const newList = tweetList.filter((ID)=>ID.id !== `${tweetDelete}`);
       
       setList(newList);
+      setLoading(false);
       return docRef;
     }
     const runDeleteTweet = () => {
@@ -169,12 +179,12 @@ function App() {
     runDeleteTweet();
     
     
-  }, [ tweetDelete, buttonDelete, tweetList, setButtonDelete, setList, setTweetDelete]);
+  }, [ tweetDelete, buttonDelete, tweetList, setButtonDelete, setList, setTweetDelete, setLoading]);
 
   //useEfect para actualizar likes
 
   useEffect(() => {
-    
+    setLoading(true);
      async function updateTweet(){
        if (typeof tweetUpdate.likes !== "undefined"){
         const docRef = await updateLikes("Tweets", tweetUpdate.id, tweetUpdate.likes );
@@ -202,15 +212,16 @@ function App() {
     updateTweet();
     upDateUser();
     deleteIdArray();
-    
+    setLoading(false);
     
     
 
     
-  }, [tweetUpdate, arrayDelete, setArrayDel,setUpdate, user]);
+  }, [tweetUpdate, arrayDelete, setArrayDel,setUpdate, user, setLoading]);
 
 
   useEffect(()=>{
+    setLoading(true);
     const upDateColor = async () => {
        const docRef = await update("Users", user.uid, {color: user.color});
        return docRef;
@@ -219,10 +230,11 @@ function App() {
     if(user.color){
       upDateColor();
     }
-    
-},[user]);
+    setLoading(false);
+},[user, setLoading]);
 
 useEffect(()=>{
+  setLoading(true);
   const upDateUsername = async () => {
      const docRef = await update("Users", user.uid, {username: user.username});
      return docRef;
@@ -231,8 +243,9 @@ useEffect(()=>{
   if(user.username){
     upDateUsername();
   }
+  setLoading(false);
   
-},[user]);
+},[user, setLoading]);
  
  
 

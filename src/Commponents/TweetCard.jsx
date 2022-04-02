@@ -96,7 +96,7 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, color, Date, pho
     
 
     const namebackground = {
-        backgroundColor: `${color ? (color) : (uid === user.uid ? (user.color):("#800FFF"))}`
+        backgroundColor: `${uid === user.uid ? (user.color): (color ? (color):("#800FFF"))}`
     }
 
     const ShowResult = ()=> {
@@ -114,7 +114,7 @@ export default function TweetCard({id, uid, Likes, Tweet, Name, color, Date, pho
                     <div className="name-date">
                         {Object.keys(otherUser).length > 0 ? (<div>
                             {uid === user.uid ? (
-                                <Link to="/user/post"  className="name" style={user.color} >{Name}</Link>
+                                <Link to="/user/post"  className="name" style={namebackground} >{Name}</Link>
                             ):(
                                 <Link to="/otherUser" className="name" style={namebackground} onClick={handleOtherUser}>{Name}</Link>
                                 
