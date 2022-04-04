@@ -102,6 +102,7 @@
         width: 100%; 
         min-height: 70%;
         align-items: center;
+        justify-content: center;
     }
     .container-welcome h1{
         margin-bottom: 1%;

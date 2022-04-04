@@ -30,4 +30,8 @@
     .user-title img{
         margin-bottom: 1vh;
     }
+    .user-title h1{
+        text-align: center;
+        width: 100%;
+    }
 }
