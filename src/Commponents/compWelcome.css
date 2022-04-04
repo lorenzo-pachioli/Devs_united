@@ -99,7 +99,7 @@
 @media screen and (max-width: 990px) {
     .container-welcome{
         flex-direction: column;
-        width: 150%; 
+        width: 100%; 
         min-height: 70%;
         align-items: center;
     }
