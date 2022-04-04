@@ -48,7 +48,6 @@ function App() {
       onAuthStateChanged(auth,  (user) => {
         if (user) {
           setUid(user)
-          console.log(user)
           setUser({
             name: user.displayName,
             email: user.email,
