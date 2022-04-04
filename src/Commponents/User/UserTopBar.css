@@ -15,7 +15,7 @@
     display:flex;
     align-items: center;
     height: 60%;
-    width: 7%;
+    width: 9%;
     background-color: #F50D5A;
     text-decoration: none;
     color:#250C23;
@@ -23,6 +23,8 @@
 }
 .logout h4{
     margin-right: 10px;
+    font-family: 'Silkscreen Expanded', sans-serif;
+    width:fit-content;
 }
 .logout img{
     height: 2vh;
@@ -35,8 +37,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 10%;
     font-family: 'Silkscreen', sans-serif;
+}
+.username h4{
+    width:fit-content;
+    margin-left: 10px;
 }
 .username img{
     width: 2vh;
@@ -57,7 +62,7 @@
     }
     .logout h4{
         margin-right: 8px;
-         font-family: 'Silkscreen Expanded', sans-serif;
+         
     }
     .logout img{
         height: 4vw;
@@ -68,6 +73,8 @@
         width: 8%;
         margin-left: 10px;
     }
+    
+    
     .username img{
         width: 4vw;
         fill: white;
