@@ -9,7 +9,7 @@ import "./UserTopBar.css"
 
 export default function FeedTopBar(){
 
-    const { setUser, setOtherUser} = useContext(AppContext);
+    const {user, setUser, setOtherUser} = useContext(AppContext);
 
     const handleLogOut = async () => {
         await loggedOut();
@@ -25,7 +25,7 @@ export default function FeedTopBar(){
         <div className="topBar-container" >
             <Link to="/feed" className="username" onClick={handleOtherUser}>
                 <img src={back} alt="not img found" />
-                <h4>username</h4>
+                <h4>{user.name}</h4>
             </Link>
             <Link to="/" className="logout" onClick={handleLogOut}>
                 <h4>Log out</h4>
