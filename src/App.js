@@ -100,6 +100,7 @@ function App() {
     async function getData(){
       setLoading(true);
       const tweets = await getColections("Tweets");
+      tweets.sort((a, b) => new Date(a.date).getTime() < new Date(b.date).getTime());
       setList(tweets);
       setLoading(false);
     }
@@ -131,8 +132,9 @@ function App() {
       const upDate = [...tweetList,
         {...tweetUpload,
           id: docRef.id
-     }]
-      setList(upDate)
+      }]
+      upDate.sort((a, b) => new Date(a.date).getTime() < new Date(b.date).getTime());
+      setList(upDate);
       
       setLoading(false);
       return docRef;
