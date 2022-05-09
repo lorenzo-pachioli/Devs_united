@@ -1,7 +1,8 @@
 import React, {useContext, useEffect} from "react";
 import "./User.css"
 import "../Commponents/User/UserPost.css";
-import UserTopBar from "../Commponents/User/UserTopBar";
+/* import UserTopBar from "../Commponents/User/UserTopBar"; */
+import FeedTopBar from "../Commponents/Feed/FeedTopBar";
 import { AppContext } from '../Hooks/AppContext';
 import TweetCard from "../Commponents/TweetCard";
 
@@ -96,7 +97,7 @@ export default function OtherUser(){
 
     return(
         <div>
-            <UserTopBar />
+            <FeedTopBar />
             <div className="user-title">
                 <img src={`${otherUser.photo}`} style={borderUser} alt="img not found" />
                 <h1 style={backColor}>{`${otherUser.Name}`}</h1>

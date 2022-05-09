@@ -7,7 +7,7 @@ import { AppContext } from '../../Hooks/AppContext';
 
 export default function FeedTopBar(){
 
-    const {user, loading} = useContext(AppContext);
+    const {user, loading, setOtherUser} = useContext(AppContext);
 
     let borderUser = {
         border: `2px solid ${user.color}`
@@ -15,6 +15,10 @@ export default function FeedTopBar(){
     let loadingLogo = {
         transform: `${loading ? (`rotate(360deg)`):(``)}` 
         
+    }
+    const handleOtherUser = ()=> {
+        setOtherUser({})
+        sessionStorage.setItem("otherUser", null);
     }
 
     return(
@@ -29,8 +33,9 @@ export default function FeedTopBar(){
                     <Link to="/" >Log in </Link>
                 )}
             </div>
-            
-            <img src={logoSmall} className="feedLogo" style={loadingLogo} alt="img not found" />
+            <Link to="/feed" className="feedLogo" onClick={handleOtherUser} >
+                <img src={logoSmall} /* className="feedLogo"  */style={loadingLogo}  alt="img not found" />
+            </Link>
             <img src={titleSmall} className="devs" alt="img not found" />
         </div>
     )
