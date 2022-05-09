@@ -11,7 +11,6 @@ export default function CompLoggedOut(){
     const {user, setUser} = useContext(AppContext);
     
     const singIn = async () => {
-        console.log(user);
         const newUser =await userAuth();
         const oldUser = await getDataById("Users", newUser.uid);
         setUser({
@@ -44,10 +43,11 @@ export default function CompLoggedOut(){
                     <div className="box">
                         <img src={google} alt="img not found" />
                     </div>
-                    Sign in with google, 
+                    Sign in with google 
                 </button>
             )}
             </div>
+            <Link to="/feed" className="link green" > Continue without sign in </Link>
             
             
         </div>

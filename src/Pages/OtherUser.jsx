@@ -48,27 +48,29 @@ export default function OtherUser(){
     const ShowResult = ()=> {
         return(
             <div>
-                {Object.keys(user).length > 0 ? (
-                <div>
-                    { user.likes.length >= 0 ? (
-                        postList.map((tweet)=>{
-                            const heartColor = user.likes.some((ID)=>{
+                { postList.map((tweet)=>{
+                            const heartColor =user.likes ? ( user.likes.some((ID)=>{
+                            
                                 if(ID === tweet.id){
                                     return true;
                                 }else{
                                     return false;
                                 }
-                            })
+                            })):(false);
+
                             const thisUser = usersList.find((u)=>{
-                                return tweet.uid === u.uid
+                                if(tweet.uid === u.uid){
+                                    return true;
+                                }else{
+                                    return false;
+                                }
                             })
                             return(
                                 <div key={postList.indexOf(tweet)} >
-                                    {thisUser ? (
-                                    <TweetCard 
+                                    {<TweetCard 
                                     uid={tweet.uid}
-                                    Name={thisUser.username ? (thisUser.username):(tweet.Name)}
-                                    color={thisUser.color}
+                                    Name={thisUser ? (thisUser.username):(tweet.Name)}
+                                    color={thisUser ? (thisUser.color):(tweet.color)}
                                     Tweet={tweet.Tweet}
                                     Likes={tweet.likes}
                                     photo={tweet.photo}
@@ -76,19 +78,13 @@ export default function OtherUser(){
                                     id={tweet.id}
                                     heartOnOff = {heartColor }
                                     />
-                                ): (<div></div>)}
+                                    }
                                 </div>
                             )
                         }
                         )
-                    ) : (<div>Loading...</div>)
-                    }
-                </div>
-
-            ):(
-                <div>Loading...</div>
                     
-            )}
+                    }
                 
             </div>
         )

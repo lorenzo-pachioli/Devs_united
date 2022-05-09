@@ -39,6 +39,11 @@
     height: 30%;
     width: 30%;
 }
+.notUser{
+    text-decoration: none;
+    color:white;
+    font-family: 'Silkscreen', sans-serif;
+}
 
 @media screen and (max-width: 990px) {
     .user-img{

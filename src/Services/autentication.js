@@ -10,9 +10,7 @@ const provider = new GoogleAuthProvider();
 const addUserToFirestore = async (user) => {
     
     const { uid, displayName, email, photoURL } = user;
-    console.log(user);
     const userExist = await getDataById("Users", uid);
-    console.log(userExist);
     if (!userExist) {
       await setData("Users", uid, {
         name: displayName,
@@ -30,7 +28,6 @@ export default async function userAuth(){
     try {
         const userCredentials = await signInWithPopup(auth, provider);
          addUserToFirestore(userCredentials.user);
-        console.log(userCredentials.user)
         return userCredentials.user;
       } catch (err) {
         console.log(err.message);

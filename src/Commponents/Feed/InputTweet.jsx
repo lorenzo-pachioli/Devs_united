@@ -49,7 +49,7 @@ export default function InputTweet(){
     return (
         <div className='input-container' >
             <div className='inputuser-img'>
-                {user ? (
+                {user.uid ? (
                     <img src={`${user.photo}`}  alt="img not found" />
 
                 ) : (
@@ -65,11 +65,11 @@ export default function InputTweet(){
                         onChange={handleInputs} 
                         type="text"
                         id='input-tweet'
-                        placeholder="What's happening?" 
+                        placeholder={user.uid ? ("What's happening?" ) : ("Must be logged in to post")}
                         rows="5" 
                         cols="30" 
                         maxLength="200"
-                        disabled={user ? (false) : (true)}
+                        disabled={user.uid ? (false) : (true)}
                         />
                 
                 

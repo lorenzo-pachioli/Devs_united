@@ -24,13 +24,13 @@ export default function FeedTopBar(){
     return(
         <div className="topBar-container" >
             <div className="user-img">
-                {user ? (
+                {user.name ? (
                     <Link to="/user/post" className="user-img" >
                         <img src={`${user.photo}`} alt="img not found" style={borderUser}/>
                     </Link>
 
                 ) : (
-                    <Link to="/" >Log in </Link>
+                    <Link to="/" className="user-img notUser">Log in </Link>
                 )}
             </div>
             <Link to="/feed" className="feedLogo" onClick={handleOtherUser} >

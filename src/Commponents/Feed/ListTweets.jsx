@@ -12,40 +12,44 @@ export default function ListTweets(){
         return (
             <div>
                 {
-                   user.likes.length >= 0 ? (
+                   
                     tweetList.map((tweet)=> {
-                        const heartColor = user.likes.some((ID)=>{
+                        const heartColor =user.likes ? ( user.likes.some((ID)=>{
                             
                                 if(ID === tweet.id){
                                     return true;
                                 }else{
                                     return false;
                                 }
-                            })
+                            })):(false);
+
                         const thisUser = usersList.find((u)=>{
-                            return tweet.uid === u.uid
+                            if(tweet.uid === u.uid){
+                                return true;
+                            }else{
+                                return false;
+                            }
+                            
                         })
                         
                         return(
                             <div key={tweetList.indexOf(tweet)} >
-                                {thisUser ? (
-                                    <TweetCard 
+                                {<TweetCard 
                                     uid={tweet.uid}
-                                    Name={thisUser.username ? (thisUser.username):(tweet.Name)}
-                                    color={thisUser.color}
+                                    Name={thisUser ? (thisUser.username):(tweet.Name)}
+                                    color={thisUser ? (thisUser.color):(tweet.color)}
                                     Tweet={tweet.Tweet}
                                     Likes={tweet.likes}
                                     photo={tweet.photo}
                                     Date={tweet.date}
                                     id={tweet.id}
                                     heartOnOff = {heartColor }
-                                    />
-                                ): (<div></div>)}
+                                    />}
                             </div>
                         )
-                        }
-                        )
-                   ) : (<div>Loading...</div>)
+                    }
+                    )
+                  
                }
                 
             </div>
@@ -54,15 +58,7 @@ export default function ListTweets(){
     
     return (
             <div className='feed-list-container'>
-                
-                {Object.keys(user).length > 0 ? (
-                    <ShowResult />
-                ):(
-                    <div>Loading...</div>
-                    
-                )}
-               
-                
+                <ShowResult />
             </div>
         
     )
